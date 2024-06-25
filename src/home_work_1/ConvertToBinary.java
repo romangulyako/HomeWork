@@ -1,5 +1,6 @@
 package home_work_1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ConvertToBinary {
@@ -40,7 +41,7 @@ public class ConvertToBinary {
             }
 
             // вычисление дополнительного кода
-            char[] additionalCode = reverseCode;
+            char[] additionalCode = Arrays.copyOf(reverseCode,reverseCode.length);
             for (int i = 7; i >= 0; i--) {
                 if (reverseCode[i] == '1') {
                     additionalCode[i] = '0';
