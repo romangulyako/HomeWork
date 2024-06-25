@@ -14,10 +14,6 @@ public class ConvertToBinary {
 
     public static String toBinaryString(byte number) {
         String binaryNum = "";
-        // Если число -128, то сразу прописываем правильный результат. Не придумал пока как сделать иначе
-        if (number == Byte.MIN_VALUE) {
-            return "10000000";
-        }
 
         // в переменную tmpNumber записываем переданное число по модулю. Это нужно, чтобы корректно перевести отрицательное число в прямой код
         int tmpNumber = Math.abs(number);
