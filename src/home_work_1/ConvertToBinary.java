@@ -7,26 +7,32 @@ public class ConvertToBinary {
         Scanner input = new Scanner(System.in);
         System.out.print("Введите число: ");
         byte decNum = input.nextByte();
-        System.out.println(decNum + " = " + toBinaryString(decNum));
         input.close();
+
+        System.out.println(decNum + " = " + toBinaryString(decNum));
     }
 
     public static String toBinaryString(byte number) {
         String binaryNum = "";
+        // Если число -128, то сразу прописываем правильный результат. Не придумал пока как сделать иначе
         if (number == Byte.MIN_VALUE) {
             return "10000000";
         }
-        // в переменную tmpNumber записываем число по модулю. Это нужно, чтобы корректно перевести отрицательное число
+
+        // в переменную tmpNumber записываем переданное число по модулю. Это нужно, чтобы корректно перевести отрицательное число в прямой код
         int tmpNumber = Math.abs(number);
+        // перевод числа в прямой код
         for (int i = 0; i < 8; i++) {
             binaryNum = tmpNumber % 2 + binaryNum;
             tmpNumber /= 2;
         }
+
         // если число отрицательное, то выполняется блок кода по вычислению его обратного и затем дополнительного кода
         if (number < 0) {
             // записываем строку с двоичным представлением числа в массив символов, для посимвольной обработки
             char[] directCode = binaryNum.toCharArray();
             char[] reverseCode = new char[8];
+
             // вычисление обратного кода
             for (int i = 0; i < directCode.length; i++) {
                 if (directCode[i] == '1') {
@@ -36,6 +42,7 @@ public class ConvertToBinary {
                     reverseCode[i] = '1';
                 }
             }
+
             // вычисление дополнительного кода
             char[] additionalCode = reverseCode;
             for (int i = 7; i >= 0; i--) {
@@ -47,6 +54,7 @@ public class ConvertToBinary {
                     break;
                 }
             }
+            // записываем получившийся массив с обратным кодом в возвращаемую строку
             binaryNum = new String(additionalCode);
         }
         return binaryNum;
