@@ -6,51 +6,29 @@ public class SleepCheck {
     public static void main(String[] args) {
         // по умолчанию рабочий день, не отпуск
         boolean weekday = true, vacation = false;
+
         Scanner input = new Scanner(System.in);
-        System.out.print("Сегодня будний день? 1 - да, 2 - нет: ");
+
+        System.out.print("Сегодня выходной? 1 - да, Другая цифра - нет: ");
         int weekdayCode = input.nextInt();
         // в зависимости от введенного числа, присваиваем weekday значение true или false
-        switch (weekdayCode) {
-            case 1: {
-                weekday = true;
-                break;
-            }
-            case 2: {
-                weekday = false;
-                break;
-            }
-            default: {
-                System.out.println("Такого варианта нет!!! Перезапустите программу!");
-            }
+        if (weekdayCode == 1) {
+            weekday = false;
         }
-        System.out.print("У вас отпуск? 1 - да, 2 - нет: ");
+
+        System.out.print("У вас отпуск? 1 - да, Другая цифра - нет: ");
         int vacationCode = input.nextInt();
         // в зависимости от введенного числа, присваиваем vacation значение true или false
-        switch (vacationCode) {
-            case 1: {
-                vacation = true;
-                break;
-            }
-            case 2: {
-                vacation = false;
-                break;
-            }
-            default: {
-                System.out.println("Такого варианта нет!!! Перезапустите программу!");
-            }
+        if (vacationCode == 1) {
+            vacation = true;
         }
-        // если ответы введены корректно, то проверяем, можно ли спать
-        if ((weekdayCode == 1 || weekdayCode == 2) && (vacationCode == 1 || vacationCode == 2))
-        {
-            if (sleepIn(weekday,vacation)) {
-                System.out.print("Можно спать! Ура!");
-            }
-            else {
-                System.out.print("Вставай, проспал!");
-            }
+
+        // проверяем, можно ли спать
+        if (sleepIn(weekday,vacation)) {
+            System.out.print("Можно спать! Ура!");
         }
         else {
-            System.out.print("Программа завершилась некорректно!");
+            System.out.print("Вставай, проспал!");
         }
         input.close();
     }
