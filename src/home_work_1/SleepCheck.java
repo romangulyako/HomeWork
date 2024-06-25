@@ -56,14 +56,15 @@ public class SleepCheck {
     }
 
     public static boolean sleepIn(boolean weekday, boolean vacation) {
-        if (vacation) {
-            return true;
-        }
-        else if (!weekday) {
-            return true;
+        if (weekday) {
+            if (vacation) {
+                return true;
+            } else {
+                return false;
+            }
         }
         else {
-            return false;
+            return true;
         }
     }
 }
