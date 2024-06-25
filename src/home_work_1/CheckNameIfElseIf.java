@@ -9,6 +9,7 @@ public class CheckNameIfElseIf {
         Scanner input = new Scanner(System.in);
         String name = input.nextLine();
         input.close();
+
         if (Objects.equals(name,"Вася")) {
             System.out.print("Привет!\nЯ тебя так долго ждал");
         }

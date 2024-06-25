@@ -8,6 +8,7 @@ public class CheckNameSwitch {
         Scanner input = new Scanner(System.in);
         String name = input.nextLine();
         input.close();
+
         switch (name) {
             case "Вася": {
                 System.out.print("Привет!\nЯ тебя так долго ждал");
