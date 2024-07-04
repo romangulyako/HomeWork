@@ -1,5 +1,7 @@
 package home_work_2.utils;
 
+import java.util.Scanner;
+
 public class ConsoleUtils {
     // метод проверяет, корректно ли в строку записано число типа int
     public static boolean isInt(String row) throws NumberFormatException {
@@ -19,5 +21,12 @@ public class ConsoleUtils {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    // Метод для ввода с консоли строки
+    public static String inputFromConsole() {
+        Scanner console = new Scanner(System.in);
+
+        return console.nextLine();
     }
 }
