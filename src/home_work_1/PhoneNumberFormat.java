@@ -6,17 +6,17 @@ public class PhoneNumberFormat {
         System.out.println(createPhoneNumber(array));
     }
     public static String createPhoneNumber(int[] nums) {
-        String phoneNumber = "(";
+        StringBuilder phoneNumber = new StringBuilder("(");
         for (int i = 0; i < nums.length; i++) {
             if (i == 2) {
-                phoneNumber += (nums[i] + ") ");
+                phoneNumber.append(nums[i]).append(") ");
             } else if (i == 5) {
-                phoneNumber += (nums[i] + "-");
+                phoneNumber.append(nums[i]).append("-");
             }
             else {
-                phoneNumber += nums[i];
+                phoneNumber.append(nums[i]);
             }
         }
-        return phoneNumber;
+        return phoneNumber.toString();
     }
 }
