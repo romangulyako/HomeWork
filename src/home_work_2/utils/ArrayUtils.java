@@ -29,4 +29,17 @@ public class ArrayUtils {
         }
         return builder.toString();
     }
+
+    public static int[] arrayFromConsole() {
+        System.out.print("Введите размер массива: ");
+        int size = Integer.parseInt(ConsoleUtils.inputFromConsole());
+        int[] array = new int[size];
+
+        for (int i = 0; i < array.length; i++) {
+            System.out.print("значение " + i + "-го элемента массива: ");
+            array[i] = Integer.parseInt(ConsoleUtils.inputFromConsole());
+        }
+
+        return array;
+    }
 }
