@@ -2,17 +2,18 @@ package home_work_2.loops;
 
 public class MultiplicationTable {
     public static void main(String[] args) {
-        System.out.println(printMultipliedTable(2,9));
+        System.out.println(printMultipliedTable(2,9, 4));
     }
 
-    public static String printMultipliedTable(int startNumber, int endNumber) {         // передаем начало и конец диапазона чисел, для которых формировать таблицу умножения
+    /*Метод принимает начало и конец диапазона чисел, для которых формируется для печати строка с таблицей умножения,
+    * а также количество подтаблиц/столбиков (таблиц умножения для одного числа) в одной строке и возвращает всю табицу*/
+    public static String printMultipliedTable(int startNumber, int endNumber, int columnsInRow) {
         StringBuilder builder = new StringBuilder();
-        int columnsCounter = 0;                                                         // счетчик для подмчета заполненных подтаблиц для одного числа
-        boolean isNewRowOfBlocks = true;                                                // флаг, указывающий, что ряд подтаблиц завершен и нужно начинать новый
+        int columnsCounter = 0;                                                         // счетчик для подмчета заполненных подтаблиц(столбиков) для одного числа
+        boolean isNewRowOfBlocks = true;                                                // флаг, указывающий, что ряд подтаблиц(столбиков) завершен и нужно начинать новый
         int tmpNumber = 0;                                                              // временная переменная, в которую записываем число, с которого начинается ряд
         int factor = 1;                                                                 // множитель для каждого числа. Будет увеличиваться до 10.
-        int columnsInRow = 4;                                                           // Количество подтаблиц в одном ряду
-        int subTablesLeft = endNumber - startNumber + 1;                                // количество всех подтаблиц
+        int subTablesLeft = endNumber - startNumber + 1;                                // количество всех подтаблиц(столбиков)
 
         for (int i = startNumber; i <= endNumber ; i++) {
             if(isNewRowOfBlocks) {
@@ -45,7 +46,6 @@ public class MultiplicationTable {
 
             }
         }
-
 
         return builder.toString();
     }
