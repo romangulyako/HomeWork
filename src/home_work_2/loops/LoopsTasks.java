@@ -20,7 +20,7 @@ public class LoopsTasks {
             builder.append("\n---------------------------------------------");
 
             builder.append("\nТест задания 1.5.2\n");
-            str =  "Процент четных чисел из " + row + " случайно выбранных составляет " + probabilityOfEvenNumbers(number);
+            str =  "Процент четных чисел из " + number + " случайно выбранных составляет " + probabilityOfEvenNumbers(number);
             builder.append(str);
             builder.append("\n---------------------------------------------");
 
@@ -31,7 +31,7 @@ public class LoopsTasks {
 
             builder.append("\nТест задания 1.5.6\n");
             str = "Реверс числа " + number + " (решение с возвратом INT) равен " + reverseNumberToInt(number);
-            str += "\nРеверс числа " + number + " (решение с возвратом STRING) равен " + reversenumberToString(number);
+            str += "\nРеверс числа " + number + " (решение с возвратом STRING) равен " + reverseNumberToString(number);
             builder.append(str);
             builder.append("\n---------------------------------------------");
         } else {
@@ -147,7 +147,6 @@ public class LoopsTasks {
 
             currentNumber = nextNumber;
             nextNumber = outputNumber;
-
         }
 
         return builder.toString();
@@ -179,7 +178,7 @@ public class LoopsTasks {
     }
 
     // Переворот числа. Если нужно просто перевернуть число, то лучше использовать этот метод, так как он не обрезает 0 спереди перевернутого числа
-    public static String reversenumberToString (int number) {
+    public static String reverseNumberToString (int number) {
         StringBuilder builder = new StringBuilder();
 
         while (number > 0) {

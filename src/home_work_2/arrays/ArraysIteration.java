@@ -55,7 +55,7 @@ public class ArraysIteration {
             i++;
         }
 
-        return builder.toString().trim();
+        return builder.toString();
     }
 
     // Метод для вывода каждого второго элемента массива в консоль с помощью 4-х разных циклов

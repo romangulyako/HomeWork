@@ -27,7 +27,6 @@ public class ArraysTasks {
 
         System.out.println("-------------------------------------------------------");
         System.out.println("Сумма цифр массива: " + DigitsSum(randomArray));
-
     }
 
     // Метод для подсчета суммы четных положительных элементов массива
