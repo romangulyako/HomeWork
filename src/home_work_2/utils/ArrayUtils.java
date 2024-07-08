@@ -17,21 +17,6 @@ public class ArrayUtils {
         return builder.toString();
     }
 
-    // метод для вывода в строку двумерного массива
-    public static String arrayToString(int[][] twoDimensionalArray) {
-        StringBuilder builder = new StringBuilder();
-        int index = 0;
-
-        for (int[] oneDimensionalArray : twoDimensionalArray) {
-            builder.append(arrayToString(oneDimensionalArray));
-
-            if(++index < twoDimensionalArray.length) {
-                builder.append("\n");
-            }
-        }
-        return builder.toString();
-    }
-
     // Метод возвращает массив, размер и значения элементов которого введены с консоли
     public static int[] arrayFromConsole() {
         System.out.print("Введите размер массива: ");
