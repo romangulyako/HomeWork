@@ -7,7 +7,7 @@ public class MultiplyNumbersRecursive {
         StringBuilder result = new StringBuilder();
 
         // Проверка, корректно ли передано в аргументы целое число
-        if(ConsoleUtils.isInt(args[0])) {
+        if(ConsoleUtils.isInt(args[0]) && Integer.parseInt(args[0]) > 0) {
             int number = Integer.parseInt(args[0]);
 
             for (int i = 1; i <= number; i++) {
@@ -23,7 +23,7 @@ public class MultiplyNumbersRecursive {
             // Вызов метода, перемножающего числа от 1 до переданного включительно
             result.append(multiplyRecursive(number)) ;
         } else {
-            result.append("Вы ввели не целое число!");
+            result.append("Вы ввели не целое или отрицательное число число! А может и не число");
         }
 
         System.out.println(result.toString());
