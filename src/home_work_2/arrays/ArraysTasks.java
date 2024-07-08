@@ -1,13 +1,13 @@
 package home_work_2.arrays;
 
-import home_work_2.utils.ArrayUtils;
+import home_work_2.utils.ArraysUtils;
 
 import java.util.Arrays;
 
 public class ArraysTasks {
     public static void main(String[] args) {
-        int[] randomArray = ArrayUtils.arrayRandom(50,100);
-        System.out.println("Массив для заданий: " + ArrayUtils.arrayToString(randomArray));
+        int[] randomArray = ArraysUtils.arrayRandom(50,100);
+        System.out.println("Массив для заданий: " + ArraysUtils.arrayToString(randomArray));
         // По доброму, для этой подзадачи нужно было создать отдельный массив с отрицательными числами в том числе, чтобы точно проверить его работу,
         // потому что метод arrayRandom возвращает массив только положительных чисел
         System.out.println("-------------------------------------------------------");
@@ -20,10 +20,10 @@ public class ArraysTasks {
         System.out.println("Элементы массива, которые меньше среднего арифметического: " + elementsLessThanAverage(randomArray));
 
         System.out.println("-------------------------------------------------------");
-        System.out.println("Два наименьших элемента массива: " + ArrayUtils.arrayToString(twoMinimalElements(randomArray)));
+        System.out.println("Два наименьших элемента массива: " + ArraysUtils.arrayToString(twoMinimalElements(randomArray)));
 
         System.out.println("-------------------------------------------------------");
-        System.out.println("Сжатый массив после удаления чисел, входящих в интервал от 5 до 34: " + ArrayUtils.arrayToString(compressArray(randomArray,5,34)));
+        System.out.println("Сжатый массив после удаления чисел, входящих в интервал от 5 до 34: " + ArraysUtils.arrayToString(compressArray(randomArray,5,34)));
 
         System.out.println("-------------------------------------------------------");
         System.out.println("Сумма цифр массива: " + DigitsSum(randomArray));

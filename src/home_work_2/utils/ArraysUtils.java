@@ -2,7 +2,7 @@ package home_work_2.utils;
 
 import java.util.Random;
 
-public class ArrayUtils {
+public class ArraysUtils {
     // метод для вывода в строку одномерного массива
     public static String arrayToString(int[] oneDimensionalArray) {
         StringBuilder builder = new StringBuilder();

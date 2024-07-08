@@ -1,10 +1,10 @@
 package home_work_2.arrays;
 
-import home_work_2.utils.ArrayUtils;
+import home_work_2.utils.ArraysUtils;
 
 public class InterfaceTest {
     public static void main(String[] args) {
-        int[] array = ArrayUtils.arrayRandom(7,50);
+        int[] array = ArraysUtils.arrayRandom(7,50);
         DoWhileOperation objectDoWhile = new DoWhileOperation();
 
         System.out.println(objectDoWhile.printToConsole(array));

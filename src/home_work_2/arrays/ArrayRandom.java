@@ -1,11 +1,11 @@
 package home_work_2.arrays;
 
-import home_work_2.utils.ArrayUtils;
+import home_work_2.utils.ArraysUtils;
 
 public class ArrayRandom {
     public static void main(String[] args) {
-        int[] array = ArrayUtils.arrayRandom(7,214);
+        int[] array = ArraysUtils.arrayRandom(7,214);
 
-        System.out.println(ArrayUtils.arrayToString(array));
+        System.out.println(ArraysUtils.arrayToString(array));
     }
 }
