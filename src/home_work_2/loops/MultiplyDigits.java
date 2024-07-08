@@ -8,9 +8,9 @@ public class MultiplyDigits {
         StringBuilder result = new StringBuilder();
 
         if(ConsoleUtils.isInt(args[0])) {                                               // Проверка, корректно ли передано в аргументы целое число
-            int number = Integer.parseInt(args[0]);
+            int number = Math.abs(Integer.parseInt(args[0]));
 
-            char[] arr = args[0].toCharArray();
+            char[] arr = String.valueOf(number).toCharArray();
             for (int i = 0; i < arr.length; i++) {
                 if (i!= arr.length - 1) {
                     result.append(arr[i]);
@@ -21,7 +21,7 @@ public class MultiplyDigits {
                 }
             }
 
-            result.append(multiply(number)) ;                                       // Вызов метода, перемножающего все цифры переданного числа
+            result.append(multiply(number)) ;                                           // Вызов метода, перемножающего все цифры переданного числа
         } else if(ConsoleUtils.isDouble(args[0])) {                                     // Проверка, передано ли в аргументы вещественное число
             result.append("Введено не целое число");
         } else {
@@ -29,11 +29,9 @@ public class MultiplyDigits {
         }
 
         System.out.println(result.toString());
-
-
     }
 
-    public static long multiply (int number) {                                      // Метод, перемножающий цифры переданного в него числа
+    public static long multiply (int number) {                                          // Метод, перемножающий цифры переданного в него числа
         int result = 1;
         while (number > 0) {
             result *= (number % 10);
