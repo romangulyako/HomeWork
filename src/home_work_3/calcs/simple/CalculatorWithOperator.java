@@ -99,9 +99,9 @@ public class CalculatorWithOperator {
         } else {
             double a = 0, b = x;
             double mid = -1;
-
-            // 70 повторений цикла выбрано для большей точности вычислений. Можно как уменьшить, так и увеличить
-            for (int i = 0; i < 70; i++) {
+            int countOfCycleRepetitions = 70;   // 70 повторений цикла выбрано для большей точности вычислений.
+                                                // Можно как уменьшить, так и увеличить
+            for (int i = 0; i < countOfCycleRepetitions; i++) {
                 mid = (a + b) / 2;
 
                 if(mid * mid < x) {
