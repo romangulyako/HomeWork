@@ -1,6 +1,8 @@
 package home_work_3.calcs.simple;
 
-public class CalculatorWithOperator {
+import home_work_3.calcs.api.ICalculator;
+
+public class CalculatorWithOperator implements ICalculator {
     /**
      * Метод делит одно число на другое
      *
