@@ -11,3 +11,4 @@
 Задание 11 - calcs.additional.CalculatorWithCounterAutoAgregationInterface, runners.CalculatorWithCounterAutoCompositeInterfaceMain
 Задание 12* - calcs.additional.CalculatorWithMemory, runners.CalculatorWithMemoryMain
 Задание 13* - calcs.additional.CalculatorWithCounterAutoDecorator, calcs.additional.CalculatorWithMemoryDecorator, runners.CalculatorDecoratorMain
+Задание 14** - calcs.additional.CalculatorStringExpression, runners.CalculatorStringExpressionMain
