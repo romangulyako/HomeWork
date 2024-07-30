@@ -57,19 +57,15 @@ public class CalculatorWithOperator implements ICalculator {
     public double pow(double x, int y) {
         double result = 1;
 
-        if (x > 0 && y >= 0) {
-            if (y == 0) {
-                return 1;
-            } else if (y == 1) {
-                return x;
-            } else {
-                for (int i = 0; i < y; i++) {
-                    result *= x;
-                }
-                return result;
-            }
+        if (y == 0) {
+            return 1;
+        } else if (y == 1) {
+            return x;
         } else {
-            return -1;
+            for (int i = 0; i < y; i++) {
+                result *= x;
+            }
+            return result;
         }
     }
 

@@ -13,11 +13,7 @@ public class CalculatorWithMathExtends extends CalculatorWithOperator implements
      */
     @Override
     public double pow(double x, int y) {
-        if (x > 0 && y >= 0) {
-            return Math.pow(x,y);
-        } else {
-            return -1;
-        }
+        return Math.pow(x,y);
     }
 
     /**
