@@ -8,20 +8,9 @@ public class MultiplyDigits {
         StringBuilder result = new StringBuilder();
 
         if(ConsoleUtils.isInt(args[0])) {                                               // Проверка, корректно ли передано в аргументы целое число
-            int number = Math.abs(Integer.parseInt(args[0]));
+            int number = Math.abs(Integer.parseInt(args[0]));                           // Вызов метода, перемножающего все цифры переданного числа
 
-            char[] arr = String.valueOf(number).toCharArray();
-            for (int i = 0; i < arr.length; i++) {
-                if (i!= arr.length - 1) {
-                    result.append(arr[i]);
-                    result.append(" * ");
-                } else {
-                    result.append(arr[i]);
-                    result.append(" = ");
-                }
-            }
-
-            result.append(multiply(number)) ;                                           // Вызов метода, перемножающего все цифры переданного числа
+            result.append(printExpression(args[0])).append(multiply(number));
         } else if(ConsoleUtils.isDouble(args[0])) {                                     // Проверка, передано ли в аргументы вещественное число
             result.append("Введено не целое число");
         } else {
@@ -38,5 +27,21 @@ public class MultiplyDigits {
             number /= 10;
         }
         return result;
+    }
+
+    public static String printExpression(String number) {
+        StringBuilder builder = new StringBuilder();
+        char[] arr = number.toCharArray();
+        for (int i = 0; i < arr.length; i++) {
+            if (i!= arr.length - 1) {
+                builder.append(arr[i]);
+                builder.append(" * ");
+            } else {
+                builder.append(arr[i]);
+                builder.append(" = ");
+            }
+        }
+
+        return builder.toString();
     }
 }

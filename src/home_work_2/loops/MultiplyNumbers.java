@@ -9,16 +9,7 @@ public class MultiplyNumbers {
         // Проверка, корректно ли передано в аргументы целое число
         if(ConsoleUtils.isInt(args[0]) && Integer.parseInt(args[0]) > 0) {
             int number = Integer.parseInt(args[0]);
-
-            for (int i = 1; i <= number; i++) {
-                if (i!= number) {
-                    result.append(i);
-                    result.append(" * ");
-                } else {
-                    result.append(i);
-                    result.append(" = ");
-                }
-            }
+            result.append(printExpression(number));
 
             // Вызов метода, перемножающего числа от 1 до переданного включительно
             if(multiply(number) != -1) {
@@ -48,5 +39,21 @@ public class MultiplyNumbers {
         }
 
         return result;
+    }
+
+    public static String printExpression(int number) {
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 1; i <= number; i++) {
+            if (i!= number) {
+                builder.append(i);
+                builder.append(" * ");
+            } else {
+                builder.append(i);
+                builder.append(" = ");
+            }
+        }
+
+        return builder.toString();
     }
 }

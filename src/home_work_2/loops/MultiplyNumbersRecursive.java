@@ -10,15 +10,7 @@ public class MultiplyNumbersRecursive {
         if(ConsoleUtils.isInt(args[0]) && Integer.parseInt(args[0]) > 0) {
             int number = Integer.parseInt(args[0]);
 
-            for (int i = 1; i <= number; i++) {
-                if (i!= number) {
-                    result.append(i);
-                    result.append(" * ");
-                } else {
-                    result.append(i);
-                    result.append(" = ");
-                }
-            }
+            result.append(printExpression(number));
 
             // Вызов метода, перемножающего числа от 1 до переданного включительно
             result.append(multiplyRecursive(number)) ;
@@ -36,5 +28,21 @@ public class MultiplyNumbersRecursive {
 
         // Метод будет вызываться, пока число не уменьшится до 1, затем сработает блок if выше и рекурсия остановится и пойдет в обратном порядке
         return number * multiplyRecursive(number - 1);
+    }
+
+    public static String printExpression(int number) {
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 1; i <= number; i++) {
+            if (i!= number) {
+                builder.append(i);
+                builder.append(" * ");
+            } else {
+                builder.append(i);
+                builder.append(" = ");
+            }
+        }
+
+        return builder.toString();
     }
 }
