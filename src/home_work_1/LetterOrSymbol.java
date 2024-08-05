@@ -10,11 +10,15 @@ public class LetterOrSymbol {
         int code = input.nextInt();
         input.close();
         // Определение, английская буква это или иной символ
-        if ((code >= 65 && code <= 90) || (code >= 97 && code <= 122)) {
+        if (isEnglishLetter(code)) {
             System.out.println("Это код английской буквы");
         }
         else {
             System.out.println("Это код иного символа");
         }
+    }
+
+    public static boolean isEnglishLetter(int code) {
+        return (code >= 65 && code <= 90) || (code >= 97 && code <= 122);
     }
 }

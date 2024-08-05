@@ -9,17 +9,19 @@ public class CheckNameSwitch {
         String name = input.nextLine();
         input.close();
 
+        System.out.println(checkName(name));
+    }
+
+    public static String checkName(String name) {
         switch (name) {
             case "Вася": {
-                System.out.print("Привет!\nЯ тебя так долго ждал");
-                break;
+                return "Привет!\nЯ тебя так долго ждал";
             }
             case "Анастасия": {
-                System.out.print("Я тебя так долго ждал");
-                break;
+                return "Я тебя так долго ждал";
             }
             default: {
-                System.out.print("Добрый день, а вы кто?");
+                return "Добрый день, а вы кто?";
             }
         }
     }

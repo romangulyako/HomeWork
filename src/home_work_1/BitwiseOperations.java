@@ -12,14 +12,22 @@ public class BitwiseOperations {
         int y = input.nextInt();                        // 27 - 0001_1011
         input.close();
 
-        System.out.println("x & y = " + (x & y));       /*    0000_1101
+        System.out.println("x & y = " + bitwiseAnd(x,y));       /*    0000_1101
                                                             & 0001_1011
                                                             -----------
                                                               0000_1001 - 9 */
 
-        System.out.println("x | y = " + (x | y));       /*    0000_1101
+        System.out.println("x | y = " + bitwiseOr(x,y));       /*    0000_1101
                                                             | 0001_1011
                                                             -----------
                                                               0001_1111 - 31 */
+    }
+
+    public static int bitwiseOr(int x, int y) {
+        return x | y;
+    }
+
+    public static int bitwiseAnd(int x, int y) {
+        return x & y;
     }
 }

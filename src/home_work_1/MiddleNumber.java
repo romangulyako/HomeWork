@@ -18,30 +18,34 @@ public class MiddleNumber {
             System.out.println("Two or more numbers are equal. It's impossible to determine the middle number!");
         }
         else {
-            if (x > y) {
-                if (x > z) {
-                    if (y > z) {
-                        System.out.println(y + " is middle number!");
-                    }
-                    else {
-                        System.out.println(z + " is middle number!");
-                    }
+            System.out.println(middleNumber(x,y,z) + " is middle number!");
+        }
+    }
+
+    public static int middleNumber(int x, int y, int z) {
+        if (x > y) {
+            if (x > z) {
+                if (y > z) {
+                    return y;
                 }
                 else {
-                    System.out.println(x + " is middle number!");
+                    return z;
                 }
             }
             else {
-                if (x > z) {
-                    System.out.println(x + " is middle number!");
+                return x;
+            }
+        }
+        else {
+            if (x > z) {
+                return x;
+            }
+            else {
+                if (y > z) {
+                    return z;
                 }
                 else {
-                    if (y > z) {
-                        System.out.println(z + " is middle number!");
-                    }
-                    else {
-                        System.out.println(y + " is middle number!");
-                    }
+                    return y;
                 }
             }
         }

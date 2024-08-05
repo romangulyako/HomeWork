@@ -10,15 +10,19 @@ public class CheckNameIfElse {
         String name = input.nextLine();
         input.close();
 
+        System.out.println(checkName(name));
+    }
+
+    public static String checkName(String name) {
         if (Objects.equals(name,"Вася")) {
-            System.out.print("Привет!\nЯ тебя так долго ждал");
+            return "Привет!\nЯ тебя так долго ждал";
         }
         else {
             if (Objects.equals(name,"Анастасия")) {
-                System.out.print("Я тебя так долго ждал");
+                return "Я тебя так долго ждал";
             }
             else {
-                System.out.print("Добрый день, а вы кто?");
+                return "Добрый день, а вы кто?";
             }
         }
     }

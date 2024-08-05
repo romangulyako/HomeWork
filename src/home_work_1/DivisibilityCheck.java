@@ -12,11 +12,23 @@ public class DivisibilityCheck {
         int y = input.nextInt();
         input.close();
         // Проверка на делимость и вывод результата деления
-        if (y != 0) {
-            System.out.println("Делить на Y можно! X/Y = " + x / y + ", в остатке " + x % y);
+        if (divisionCheck(y)) {
+            System.out.println("Делить на Y можно! X/Y = " + divide(x,y) + ", в остатке " + remainder(x,y));
         }
         else {
             System.out.println("Делить на Y нельзя!");
         }
+    }
+
+    public static boolean divisionCheck(int y) {
+        return y != 0;
+    }
+
+    public static int divide(int x, int y) {
+        return x / y;
+    }
+
+    public static int remainder(int x,int y) {
+        return x % y;
     }
 }
