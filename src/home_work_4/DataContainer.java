@@ -122,8 +122,10 @@ public class DataContainer<T> {
      *                   по каким критериям будет происходить сортировка
      */
     public void sort(Comparator<T> comparator) {
-        for (int i = 0; i < data.length - 1; i++) {
-            for (int j = i + 1; j < data.length; j++) {
+        int countOfNullElements = this.moveNullElementToEnd(this);
+
+        for (int i = 0; i < data.length - (1 + countOfNullElements); i++) {
+            for (int j = i + 1; j < data.length - countOfNullElements; j++) {
                 if (comparator.compare(data[i],data[j]) > 0) {
                     T tmp = data[i];
                     data[i] = data[j];
@@ -167,6 +169,27 @@ public class DataContainer<T> {
      * @param <T> тип объектов, которые содержит коллекция
      */
     public static <T extends Comparable> void sort(DataContainer<T> container) {
+        int countOfNullElements = container.moveNullElementToEnd(container);
+
+        // Сортируем элементы массива пока не пойдут null-элементы
+        for (int i = 0; i < container.getItems().length - (countOfNullElements + 1); i++) {
+            for (int j = i + 1; j < container.getItems().length - countOfNullElements; j++) {
+                if (container.get(i).compareTo(container.get(j)) > 0) {
+                    T tmp = container.get(i);
+                    container.getItems()[i] = container.get(j);
+                    container.getItems()[j] = tmp;
+                }
+            }
+        }
+    }
+
+    /**
+     * Приватный метод, который перемещает все null-элементы коллекции в конец
+     *
+     * @param container коллекция, null-элементы которой нужно переместить в конец
+     * @return количество null-элементов
+     */
+    private int moveNullElementToEnd(DataContainer<T> container) {
         // Перемещаем все null-элементы в конец массива
         for (int i = 0; i < container.getItems().length - 1; i++) {
             for (int j = i + 1; j < container.getItems().length; j++) {
@@ -185,16 +208,6 @@ public class DataContainer<T> {
                 countOfNullElements++;
             }
         }
-
-        // Сортируем элементы массива пока не пойдут null-элементы
-        for (int i = 0; i < container.getItems().length - (countOfNullElements + 1); i++) {
-            for (int j = i + 1; j < container.getItems().length - countOfNullElements; j++) {
-                if (container.get(i).compareTo(container.get(j)) > 0) {
-                    T tmp = container.get(i);
-                    container.getItems()[i] = container.get(j);
-                    container.getItems()[j] = tmp;
-                }
-            }
-        }
+        return countOfNullElements;
     }
 }

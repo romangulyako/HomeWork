@@ -112,6 +112,9 @@ public class DataContainerMain {
             System.out.println("Коллекция после вставки элемента: " + Arrays.toString(stringContainer.getItems()));
 
             System.out.println("Коллекция без null-элементов" + stringContainer.toString());
+
+            stringContainer.sort(new StringLengthComparator());
+            System.out.println("Отсортированная коллекция: " + stringContainer.toString());
         } else {
             System.out.println("Массива нет, Вы передали null!");
         }
