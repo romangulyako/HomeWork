@@ -136,6 +136,35 @@ public class DataContainerMain {
             System.out.println("Массива нет, Вы передали null!");
         }
         System.out.println("-------------------------------------------");
+
+        Integer[] intArrayForSort = {2,56,null,9,2,8,4,null,28,65};
+
+        if (isNotNullInsteadOfArray(intArrayForSort)) {
+            DataContainer<Integer> containerForStaticSort = new DataContainer<>(intArrayForSort);
+
+            System.out.println("Коллекция до сортировки: " + containerForStaticSort.toString());
+            DataContainer.sort(containerForStaticSort);
+
+            System.out.println("Коллекция после сортировки: " + containerForStaticSort.toString());
+        } else {
+            System.out.println("Массива нет, Вы передали null!");
+        }
+        System.out.println("-------------------------------------------");
+
+        String[] stringArrayForSort = {"Илья", "Роман", "Кирилл", null, "Анна","Мария", null, "Евгений", "Максим", "Артем", null, "Михаил"};
+
+        if (isNotNullInsteadOfArray(stringArrayForSort)) {
+            DataContainer<String> containerForStaticSort = new DataContainer<>(stringArrayForSort);
+
+            System.out.println("Коллекция до сортировки: " + containerForStaticSort.toString());
+            DataContainer.sort(containerForStaticSort);
+
+            System.out.println("Коллекция после сортировки: " + containerForStaticSort.toString());
+        } else {
+            System.out.println("Массива нет, Вы передали null!");
+        }
+        System.out.println("-------------------------------------------");
+
     }
 
     public static <T> boolean isNotNullInsteadOfArray(T[] array) {

@@ -159,4 +159,42 @@ public class DataContainer<T> {
 
         return builder.toString();
     }
+
+    /**
+     * Статический метод, который сортирует переданную в него коллекцию
+     *
+     * @param container коллекция, которую необходимо отсортировать
+     * @param <T> тип объектов, которые содержит коллекция
+     */
+    public static <T extends Comparable> void sort(DataContainer<T> container) {
+        // Перемещаем все null-элементы в конец массива
+        for (int i = 0; i < container.getItems().length - 1; i++) {
+            for (int j = i + 1; j < container.getItems().length; j++) {
+                if (container.get(i) == null) {
+                    T tmp = container.get(i);
+                    container.getItems()[i] = container.get(j);
+                    container.getItems()[j] = tmp;
+                }
+            }
+        }
+
+        int countOfNullElements = 0;
+        // Считаем сколько в массиве null-полей (для меньшего количества проверок при сортировке)
+        for (T item : container.getItems()) {
+            if (item == null) {
+                countOfNullElements++;
+            }
+        }
+
+        // Сортируем элементы массива пока не пойдут null-элементы
+        for (int i = 0; i < container.getItems().length - (countOfNullElements + 1); i++) {
+            for (int j = i + 1; j < container.getItems().length - countOfNullElements; j++) {
+                if (container.get(i).compareTo(container.get(j)) > 0) {
+                    T tmp = container.get(i);
+                    container.getItems()[i] = container.get(j);
+                    container.getItems()[j] = tmp;
+                }
+            }
+        }
+    }
 }
