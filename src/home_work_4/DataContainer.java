@@ -183,7 +183,13 @@ public class DataContainer<T> {
         }
     }
 
-
+    /**
+     * Статический метод, который сортирует коллекцию с помощью определенной реализации интерфейса Comparator
+     *
+     * @param container коллекция, которую необходимо отсортировать
+     * @param comparator реализация интерфейса Comparator
+     * @param <T> тип объектов, которые содержит коллекция и которые сравнивает comparator
+     */
     public static <T> void sort(DataContainer<T> container, Comparator<T> comparator) {
         container.sort(comparator);
     }

@@ -175,9 +175,6 @@ public class DataContainerMain {
             System.out.println("Массива нет, Вы передали null!");
         }
         System.out.println("-------------------------------------------");
-
-
-
     }
 
     public static <T> boolean isNotNullInsteadOfArray(T[] array) {
