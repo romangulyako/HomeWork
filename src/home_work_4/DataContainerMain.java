@@ -8,7 +8,13 @@ import java.util.Arrays;
 public class DataContainerMain {
     public static void main(String[] args) {
         Integer[] arrayOfInteger = new Integer[0];
+        Integer[] arrayOfIntegerWithNullElements = {2, 5, 6, 8, 0, null, 5, 6, 89, null, null};
+        String[] arrayOfString = new String[0];
+        String[] arrayOfStringWithNullElements = {"Илья", "Роман", "Кирилл", null, "Анна","Мария", null, "Евгений", "Максим", "Артем", null, "Михаил"};
+        Integer[] emptyArray = new Integer[0];
+        Integer[] nullArray = null;
 
+        // Тест заданий 1-10
         if (isNotNullInsteadOfArray(arrayOfInteger)) {
             DataContainer<Integer> intContainer = new DataContainer<>(arrayOfInteger);
 
@@ -41,8 +47,6 @@ public class DataContainerMain {
             System.out.println("Массива нет, Вы передали null!");
         }
         System.out.println("-------------------------------------------");
-
-        String[] arrayOfString = new String[0];
 
         if (isNotNullInsteadOfArray(arrayOfString)) {
             DataContainer<String> stringContainer = new DataContainer<>(arrayOfString);
@@ -83,8 +87,6 @@ public class DataContainerMain {
         }
         System.out.println("-------------------------------------------");
 
-        Integer[] arrayOfIntegerWithNullElements = {2, 5, 6, 8, 0, null, 5, 6, 89, null, null};
-
         if (isNotNullInsteadOfArray(arrayOfIntegerWithNullElements)) {
             DataContainer<Integer> intContainer = new DataContainer<>(arrayOfIntegerWithNullElements);
 
@@ -99,8 +101,6 @@ public class DataContainerMain {
             System.out.println("Массива нет, Вы передали null!");
         }
         System.out.println("-------------------------------------------");
-
-        String[] arrayOfStringWithNullElements = {"Илья", "Роман", "Кирилл", null, "Анна","Мария", null, "Евгений", "Максим", "Артем", null, "Михаил"};
 
         if (isNotNullInsteadOfArray(arrayOfStringWithNullElements)) {
             DataContainer<String> stringContainer = new DataContainer<>(arrayOfStringWithNullElements);
@@ -120,7 +120,6 @@ public class DataContainerMain {
         }
         System.out.println("-------------------------------------------");
 
-        Integer[] emptyArray = new Integer[0];
         if (isNotNullInsteadOfArray(emptyArray)) {
             DataContainer<Integer> emptyContainer = new DataContainer<>(emptyArray);
 
@@ -130,7 +129,6 @@ public class DataContainerMain {
         }
         System.out.println("-------------------------------------------");
 
-        Integer[] nullArray = null;
         if (isNotNullInsteadOfArray(nullArray)) {
             DataContainer<Integer> nullContainer = new DataContainer<>(nullArray);
 
@@ -140,10 +138,21 @@ public class DataContainerMain {
         }
         System.out.println("-------------------------------------------");
 
-        Integer[] intArrayForSort = {2,56,null,9,2,8,4,null,28,65};
+        // Тест задания 11*
+        if (isNotNullInsteadOfArray(arrayOfIntegerWithNullElements)) {
+            DataContainer<Integer> containerForStaticSort = new DataContainer<>(arrayOfIntegerWithNullElements);
 
-        if (isNotNullInsteadOfArray(intArrayForSort)) {
-            DataContainer<Integer> containerForStaticSort = new DataContainer<>(intArrayForSort);
+            System.out.println("Коллекция до сортировки: " + containerForStaticSort.toString());
+            DataContainer.sort(containerForStaticSort);
+
+            System.out.println("Коллекция после сортировки: " + containerForStaticSort.toString());
+        } else {
+            System.out.println("Массива нет, Вы передали null!");
+        }
+        System.out.println("-------------------------------------------");
+
+        if (isNotNullInsteadOfArray(arrayOfStringWithNullElements)) {
+            DataContainer<String> containerForStaticSort = new DataContainer<>(arrayOfStringWithNullElements);
 
             System.out.println("Коллекция до сортировки: " + containerForStaticSort.toString());
             DataContainer.sort(containerForStaticSort);
@@ -154,19 +163,20 @@ public class DataContainerMain {
         }
         System.out.println("-------------------------------------------");
 
-        String[] stringArrayForSort = {"Илья", "Роман", "Кирилл", null, "Анна","Мария", null, "Евгений", "Максим", "Артем", null, "Михаил"};
-
-        if (isNotNullInsteadOfArray(stringArrayForSort)) {
-            DataContainer<String> containerForStaticSort = new DataContainer<>(stringArrayForSort);
+        // Тест задания 12*
+        if (isNotNullInsteadOfArray(arrayOfStringWithNullElements)) {
+            DataContainer<String> containerForStaticSort = new DataContainer<>(arrayOfStringWithNullElements);
 
             System.out.println("Коллекция до сортировки: " + containerForStaticSort.toString());
-            DataContainer.sort(containerForStaticSort);
+            DataContainer.sort(containerForStaticSort,new StringLengthComparator());
 
             System.out.println("Коллекция после сортировки: " + containerForStaticSort.toString());
         } else {
             System.out.println("Массива нет, Вы передали null!");
         }
         System.out.println("-------------------------------------------");
+
+
 
     }
 

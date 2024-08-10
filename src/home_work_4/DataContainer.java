@@ -183,6 +183,11 @@ public class DataContainer<T> {
         }
     }
 
+
+    public static <T> void sort(DataContainer<T> container, Comparator<T> comparator) {
+        container.sort(comparator);
+    }
+
     /**
      * Приватный метод, который перемещает все null-элементы коллекции в конец
      *
