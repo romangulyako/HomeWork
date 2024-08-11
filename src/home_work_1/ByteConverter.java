@@ -22,10 +22,16 @@ public class ByteConverter {
     }
 
     public static int kiloBytesToBytes(int kBytes) {
-        return kBytes * 1024;
+        if (kBytes >= 0) {
+            return kBytes * 1024;
+        }
+        return -1;
     }
 
     public static double bytesToKiloBytes(int bytes) {
-        return bytes / 1024.0;
+        if (bytes >= 0) {
+            return bytes / 1024.0;
+        }
+        return -1;
     }
 }

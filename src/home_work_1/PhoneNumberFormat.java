@@ -6,17 +6,16 @@ public class PhoneNumberFormat {
         System.out.println(createPhoneNumber(array));
     }
     public static String createPhoneNumber(int[] nums) {
-        StringBuilder phoneNumber = new StringBuilder("(");
-        for (int i = 0; i < nums.length; i++) {
-            if (i == 2) {
-                phoneNumber.append(nums[i]).append(") ");
-            } else if (i == 5) {
-                phoneNumber.append(nums[i]).append("-");
+        if (nums.length != 10) {
+            return "Неверное количество символов";
+        } else {
+            for (int num : nums) {
+                if (num < 0 || num >= 10) {
+                    return "Одно из чисел массива больше 10. Неверный формат";
+                }
             }
-            else {
-                phoneNumber.append(nums[i]);
-            }
+
+            return String.format("(%d%d%d) %d%d%d-%d%d%d%d",nums[0],nums[1], nums[2],nums[3],nums[4],nums[5],nums[6],nums[7],nums[8],nums[9]);
         }
-        return phoneNumber.toString();
     }
 }
