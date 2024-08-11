@@ -1,9 +1,12 @@
 package home_work_4;
 
+import home_work_4.iterators.DataContainerIterator;
+
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Iterator;
 
-public class DataContainer<T> {
+public class DataContainer<T>  implements Iterable<T>{
     /**
      * Приватное поле, с которым будет осуществлена работа методов экземпляра класса DataContainer
      */
@@ -220,5 +223,14 @@ public class DataContainer<T> {
             }
         }
         return countOfNullElements;
+    }
+
+    /**
+     * Метод возвращает объект типа DataContainerIterator, с помощью которого осуществляется итерирование коллекции
+     * @return итератор класса DataContainerIterator, который реализует интерфейс Iterator
+     */
+    @Override
+    public Iterator<T> iterator() {
+        return new DataContainerIterator<>(this);
     }
 }

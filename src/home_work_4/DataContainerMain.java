@@ -1,138 +1,140 @@
 package home_work_4;
 
 import home_work_4.comparators.IntegerComparator;
+import home_work_4.comparators.StringAlphabeticComparator;
 import home_work_4.comparators.StringLengthComparator;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class DataContainerMain {
     public static void main(String[] args) {
-        Integer[] arrayOfInteger = new Integer[0];
+        Integer[] emptyArrayOfInteger = new Integer[0];
         Integer[] arrayOfIntegerWithNullElements = {2, 5, 6, 8, 0, null, 5, 6, 89, null, null};
-        String[] arrayOfString = new String[0];
+        String[] emptyArrayOfString = new String[0];
         String[] arrayOfStringWithNullElements = {"Илья", "Роман", "Кирилл", null, "Анна","Мария", null, "Евгений", "Максим", "Артем", null, "Михаил"};
         Integer[] emptyArray = new Integer[0];
         Integer[] nullArray = null;
 
         // Тест заданий 1-10
-        if (isNotNullInsteadOfArray(arrayOfInteger)) {
-            DataContainer<Integer> intContainer = new DataContainer<>(arrayOfInteger);
+        if (isNotNullInsteadOfArray(emptyArrayOfInteger)) {
+            DataContainer<Integer> container = new DataContainer<>(emptyArrayOfInteger);
 
-            intContainer.add(2);
-            intContainer.add(4);
-            intContainer.add(1);
-            intContainer.add(4);
-            intContainer.add(0);
-            intContainer.add(6);
-            System.out.println("Коллекция после добавления элементов: " + Arrays.toString(intContainer.getItems()));
+            container.add(2);
+            container.add(4);
+            container.add(1);
+            container.add(4);
+            container.add(0);
+            container.add(6);
+            System.out.println("Коллекция после добавления элементов: " + container);
 
             int indexForDelete = 4;
-            if(intContainer.delete(indexForDelete)) {
+            if(container.delete(indexForDelete)) {
                 System.out.println("Был удален один элемент по индексу " + indexForDelete);
-                System.out.println("Коллекция после удаления элемента: " + Arrays.toString(intContainer.getItems()));
+                System.out.println("Коллекция после удаления элемента: " + container);
             }
 
             Integer element = 9;
-            System.out.println("Был добавлен элемент " + element + " по индексу " + intContainer.add(element));
-            System.out.println("Коллекция после добавления элемента: " + Arrays.toString(intContainer.getItems()));
+            System.out.println("Был добавлен элемент " + element + " по индексу " + container.add(element));
+            System.out.println("Коллекция после добавления элемента: " + container);
 
-            intContainer.sort(new IntegerComparator());
-            System.out.println("Отсортированная коллекция: " + Arrays.toString(intContainer.getItems()));
+            container.sort(new IntegerComparator());
+            System.out.println("Отсортированная коллекция: " + Arrays.toString(container.getItems()));
 
-            if (intContainer.delete(Integer.valueOf(2))) {
+            if (container.delete(Integer.valueOf(2))) {
                 System.out.println("Был удален один элемент!");
-                System.out.println("Коллекция после удаления элемента: " + Arrays.toString(intContainer.getItems()));
+                System.out.println("Коллекция после удаления элемента: " + container);
             }
         } else {
             System.out.println("Массива нет, Вы передали null!");
         }
         System.out.println("-------------------------------------------");
 
-        if (isNotNullInsteadOfArray(arrayOfString)) {
-            DataContainer<String> stringContainer = new DataContainer<>(arrayOfString);
+        if (isNotNullInsteadOfArray(emptyArrayOfString)) {
+            DataContainer<String> container = new DataContainer<>(emptyArrayOfString);
 
-            stringContainer.add("Илья");
-            stringContainer.add("Роман");
-            stringContainer.add("Кирилл");
-            stringContainer.add("Анна");
-            stringContainer.add("Мария");
-            stringContainer.add("Евгений");
-            stringContainer.add("Максим");
-            stringContainer.add("Артем");
-            stringContainer.add("Михаил");
-            System.out.println("Коллекция после добавления элементов: " + Arrays.toString(stringContainer.getItems()));
+            container.add("Илья");
+            container.add("Роман");
+            container.add("Кирилл");
+            container.add("Анна");
+            container.add("Мария");
+            container.add("Евгений");
+            container.add("Максим");
+            container.add("Артем");
+            container.add("Михаил");
+            System.out.println("Коллекция после добавления элементов: " + container);
 
             String element = "Роман";
 
-            if (stringContainer.delete(element)) {
+            if (container.delete(element)) {
                 System.out.println("Был удален один элемент!");
-                System.out.println("Коллекция после удаления элемента: " + Arrays.toString(stringContainer.getItems()));
+                System.out.println("Коллекция после удаления элемента: " + container);
             }
 
-            System.out.println("Добавлен элемент '"+ element + "' с индексом " + stringContainer.add(element));
-            System.out.println("Коллекция после добавления элемента: " + Arrays.toString(stringContainer.getItems()));
+            System.out.println("Добавлен элемент '"+ element + "' с индексом " + container.add(element));
+            System.out.println("Коллекция после добавления элемента: " + container);
 
-            stringContainer.sort(new StringLengthComparator());
-            System.out.println("Отсортированная по длине строки коллекция: " + Arrays.toString(stringContainer.getItems()));
+            container.sort(new StringLengthComparator());
+            System.out.println("Отсортированная по длине строки коллекция: " + container);
 
-            System.out.println("Первый элемент в списке: " + stringContainer.get(0));
+            System.out.println("Первый элемент в списке: " + container.get(0));
 
-            if(stringContainer.delete(4)) {
+            if(container.delete(4)) {
                 System.out.println("Был удален один элемент!");
             }
 
-            System.out.println("Добавлен элемент по индексу " + stringContainer.add(element));
+            System.out.println("Добавлен элемент по индексу " + container.add(element));
         } else {
             System.out.println("Массива нет, Вы передали null!");
         }
         System.out.println("-------------------------------------------");
 
         if (isNotNullInsteadOfArray(arrayOfIntegerWithNullElements)) {
-            DataContainer<Integer> intContainer = new DataContainer<>(arrayOfIntegerWithNullElements);
+            DataContainer<Integer> container = new DataContainer<>(arrayOfIntegerWithNullElements);
 
-            System.out.println("Коллекция до вставки элемента: " + Arrays.toString(intContainer.getItems()));
+            System.out.println("Коллекция до вставки элемента: " + Arrays.toString(container.getItems()));
 
             Integer element = 6;
-            System.out.println("Добавлен элемент " + element + " по индексу " + intContainer.add(element));
-            System.out.println("Коллекция после вставки элемента: " + Arrays.toString(intContainer.getItems()));
+            System.out.println("Добавлен элемент " + element + " по индексу " + container.add(element));
+            System.out.println("Коллекция после вставки элемента: " + Arrays.toString(container.getItems()));
 
-            System.out.println("Коллекция без null-элементов" + intContainer.toString());
+            System.out.println("Коллекция без null-элементов" + container);
         } else {
             System.out.println("Массива нет, Вы передали null!");
         }
         System.out.println("-------------------------------------------");
 
         if (isNotNullInsteadOfArray(arrayOfStringWithNullElements)) {
-            DataContainer<String> stringContainer = new DataContainer<>(arrayOfStringWithNullElements);
+            DataContainer<String> container = new DataContainer<>(arrayOfStringWithNullElements);
 
-            System.out.println("Коллекция до вставки элемента: " + Arrays.toString(stringContainer.getItems()));
+            System.out.println("Коллекция до вставки элемента: " + Arrays.toString(container.getItems()));
 
             String element = "Афанасий";
-            System.out.println("Добавлен элемент '" + element + "' по индексу " + stringContainer.add(element));
-            System.out.println("Коллекция после вставки элемента: " + Arrays.toString(stringContainer.getItems()));
+            System.out.println("Добавлен элемент '" + element + "' по индексу " + container.add(element));
+            System.out.println("Коллекция после вставки элемента: " + Arrays.toString(container.getItems()));
 
-            System.out.println("Коллекция без null-элементов" + stringContainer.toString());
+            System.out.println("Коллекция без null-элементов");
 
-            stringContainer.sort(new StringLengthComparator());
-            System.out.println("Отсортированная коллекция: " + stringContainer.toString());
+            container.sort(new StringAlphabeticComparator());
+            System.out.println("Отсортированная по алфавиту коллекция: " + container);
         } else {
             System.out.println("Массива нет, Вы передали null!");
         }
         System.out.println("-------------------------------------------");
 
-        if (isNotNullInsteadOfArray(emptyArray)) {
-            DataContainer<Integer> emptyContainer = new DataContainer<>(emptyArray);
+        if (isNotNullInsteadOfArray(emptyArrayOfInteger)) {
+            DataContainer<Integer> container = new DataContainer<>(emptyArrayOfInteger);
 
-            System.out.println("Пустая коллекция: " + emptyContainer.toString());
+            System.out.println("Пустая коллекция: " + container);
         } else {
             System.out.println("Массива нет, Вы передали null!");
         }
         System.out.println("-------------------------------------------");
 
         if (isNotNullInsteadOfArray(nullArray)) {
-            DataContainer<Integer> nullContainer = new DataContainer<>(nullArray);
+            DataContainer<Integer> container = new DataContainer<>(nullArray);
 
-            System.out.println("Пустая коллекция: " + nullContainer.toString());
+            System.out.println("Пустая коллекция: " + container);
         } else {
             System.out.println("Массива нет, Вы передали null!");
         }
@@ -140,37 +142,71 @@ public class DataContainerMain {
 
         // Тест задания 11*
         if (isNotNullInsteadOfArray(arrayOfIntegerWithNullElements)) {
-            DataContainer<Integer> containerForStaticSort = new DataContainer<>(arrayOfIntegerWithNullElements);
+            DataContainer<Integer> container = new DataContainer<>(arrayOfIntegerWithNullElements);
 
-            System.out.println("Коллекция до сортировки: " + containerForStaticSort.toString());
-            DataContainer.sort(containerForStaticSort);
-
-            System.out.println("Коллекция после сортировки: " + containerForStaticSort.toString());
+            System.out.println("Коллекция до сортировки: " + container);
+            DataContainer.sort(container);
+            System.out.println("Коллекция после сортировки: " + container);
         } else {
             System.out.println("Массива нет, Вы передали null!");
         }
-        System.out.println("-------------------------------------------");
 
-        if (isNotNullInsteadOfArray(arrayOfStringWithNullElements)) {
-            DataContainer<String> containerForStaticSort = new DataContainer<>(arrayOfStringWithNullElements);
-
-            System.out.println("Коллекция до сортировки: " + containerForStaticSort.toString());
-            DataContainer.sort(containerForStaticSort);
-
-            System.out.println("Коллекция после сортировки: " + containerForStaticSort.toString());
-        } else {
-            System.out.println("Массива нет, Вы передали null!");
-        }
         System.out.println("-------------------------------------------");
 
         // Тест задания 12*
         if (isNotNullInsteadOfArray(arrayOfStringWithNullElements)) {
-            DataContainer<String> containerForStaticSort = new DataContainer<>(arrayOfStringWithNullElements);
+            DataContainer<String> container = new DataContainer<>(arrayOfStringWithNullElements);
 
-            System.out.println("Коллекция до сортировки: " + containerForStaticSort.toString());
-            DataContainer.sort(containerForStaticSort,new StringLengthComparator());
+            System.out.println("Коллекция до сортировки: " + container);
+            DataContainer.sort(container,new StringLengthComparator());
+            System.out.println("Коллекция после сортировки: " + container);
+        } else {
+            System.out.println("Массива нет, Вы передали null!");
+        }
+        System.out.println("-------------------------------------------");
 
-            System.out.println("Коллекция после сортировки: " + containerForStaticSort.toString());
+        // Тест задания 13**
+        if (isNotNullInsteadOfArray(arrayOfStringWithNullElements)) {
+            DataContainer<Integer> container = new DataContainer<>(arrayOfIntegerWithNullElements);
+            StringBuilder builder = new StringBuilder();
+
+            // Проверка реализации интерфейса Iterable. Без нее цикл foreach не работал бы.
+            for (Integer item : container) {
+                builder.append(item).append(" ");
+            }
+
+            System.out.println(builder.toString().trim());
+        } else {
+            System.out.println("Массива нет, Вы передали null!");
+        }
+        System.out.println("-------------------------------------------");
+
+        if (isNotNullInsteadOfArray(arrayOfStringWithNullElements)) {
+            DataContainer<String> container = new DataContainer<>(arrayOfStringWithNullElements);
+            StringBuilder builder = new StringBuilder();
+            Iterator<String> iterator = container.iterator();
+
+            // Проверка реализации методов интерфейса Iterator
+            while (iterator.hasNext()) {
+                builder.append(iterator.next()).append(" ");
+            }
+
+            System.out.println(builder.toString().trim());
+
+            iterator = container.iterator();
+            builder = new StringBuilder();
+
+            while (iterator.hasNext()) {
+                String str = iterator.next();
+
+                if (str != null && str.equals("Роман")) {
+                    iterator.remove();
+                } else {
+                    builder.append(str).append(" ");
+                }
+            }
+
+            System.out.println(builder.toString().trim());
         } else {
             System.out.println("Массива нет, Вы передали null!");
         }
