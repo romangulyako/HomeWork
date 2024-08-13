@@ -165,7 +165,7 @@ public class DataContainer<T>  implements Iterable<T>{
      * @param container коллекция, которую необходимо отсортировать
      * @param <T> тип объектов, которые содержит коллекция
      */
-    public static <T extends Comparable> void sort(DataContainer<T> container) {
+    public static <T extends Comparable<T>> void sort(DataContainer<T> container) {
         int countOfNullElements = container.moveNullElementToEnd(container);
 
         // Сортируем элементы массива пока не пойдут null-элементы
