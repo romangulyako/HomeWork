@@ -83,17 +83,11 @@ public class DataContainer<T>  implements Iterable<T>{
      */
     public boolean delete(int index) {
         if (index < data.length && index >= 0) {
-            T[] newData = Arrays.copyOf(data,data.length - 1);
 
-            for (int i = 0; i < index; i++) {
-                newData[i] = data[i];
+            for (int i = index; i < data.length - 1; i++) {
+                data[i] = data[i + 1];
             }
-
-            for (int i = index; i < newData.length; i++) {
-                newData[i] = data[i+1];
-            }
-
-            data = Arrays.copyOf(newData,newData.length);
+            data = Arrays.copyOf(data,data.length -1);
 
             return true;
         }

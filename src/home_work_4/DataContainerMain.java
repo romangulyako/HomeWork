@@ -13,7 +13,6 @@ public class DataContainerMain {
         Integer[] arrayOfIntegerWithNullElements = {2, 5, 6, 8, 0, null, 5, 6, 89, null, null};
         String[] emptyArrayOfString = new String[0];
         String[] arrayOfStringWithNullElements = {"Илья", "Роман", "Кирилл", null, "Анна","Мария", null, "Евгений", "Максим", "Артем", null, "Михаил"};
-        Integer[] emptyArray = new Integer[0];
         Integer[] nullArray = null;
 
         // Тест заданий 1-10
