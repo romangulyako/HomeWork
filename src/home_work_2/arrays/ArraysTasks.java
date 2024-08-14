@@ -123,8 +123,8 @@ public class ArraysTasks {
         int sum = 0;
 
         for (int i = 0; i < array.length; i++) {
-            while (array[i] > 0) {
-                sum += array[i] % 10;
+            while (Math.abs(array[i]) > 0) {
+                sum += Math.abs(array[i]) % 10;
                 array[i] /= 10;
             }
         }
