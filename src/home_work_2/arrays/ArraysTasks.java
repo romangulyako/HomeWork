@@ -26,7 +26,7 @@ public class ArraysTasks {
         System.out.println("Сжатый массив после удаления чисел, входящих в интервал от 5 до 34: " + ArraysUtils.arrayToString(compressArray(randomArray,5,34)));
 
         System.out.println("-------------------------------------------------------");
-        System.out.println("Сумма цифр массива: " + DigitsSum(randomArray));
+        System.out.println("Сумма цифр массива: " + digitsSum(randomArray));
     }
 
     // Метод для подсчета суммы четных положительных элементов массива
@@ -119,7 +119,7 @@ public class ArraysTasks {
     }
 
     // Метод для подсчета суммы всех цифр массива
-    public static int DigitsSum(int[] array) {
+    public static int digitsSum(int[] array) {
         int sum = 0;
 
         for (int i = 0; i < array.length; i++) {
