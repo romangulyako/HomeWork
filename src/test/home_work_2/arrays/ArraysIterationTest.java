@@ -1,4 +1,4 @@
-package test.home_work_2.arrays_test;
+package test.home_work_2.arrays;
 
 import home_work_2.arrays.ArraysIteration;
 import org.junit.jupiter.api.Test;
