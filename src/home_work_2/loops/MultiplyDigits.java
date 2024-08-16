@@ -8,7 +8,7 @@ public class MultiplyDigits {
         StringBuilder result = new StringBuilder();
 
         if(ConsoleUtils.isInt(args[0])) {                                               // Проверка, корректно ли передано в аргументы целое число
-            int number = Math.abs(Integer.parseInt(args[0]));                           // Вызов метода, перемножающего все цифры переданного числа
+            int number = Integer.parseInt(args[0]);                           // Вызов метода, перемножающего все цифры переданного числа
 
             result.append(printExpression(args[0])).append(multiply(number));
         } else if(ConsoleUtils.isDouble(args[0])) {                                     // Проверка, передано ли в аргументы вещественное число
@@ -21,7 +21,13 @@ public class MultiplyDigits {
     }
 
     public static long multiply (int number) {                                          // Метод, перемножающий цифры переданного в него числа
+        if (number == 0) {
+            return 0;
+        }
+
         int result = 1;
+        number = Math.abs(number);
+
         while (number > 0) {
             result *= (number % 10);
             number /= 10;
@@ -31,6 +37,9 @@ public class MultiplyDigits {
 
     public static String printExpression(String number) {
         StringBuilder builder = new StringBuilder();
+
+        number = number.replaceFirst("-", "");
+
         char[] arr = number.toCharArray();
         for (int i = 0; i < arr.length; i++) {
             if (i!= arr.length - 1) {

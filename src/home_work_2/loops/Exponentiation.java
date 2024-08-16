@@ -23,11 +23,11 @@ public class Exponentiation {
         while (!isCorrectInput) {                                                                                   // Ввод с консоли степени возведения
             System.out.print("Введите степень возведения: ");
             String row = ConsoleUtils.inputFromConsole();
-            if(ConsoleUtils.isInt(row) && Integer.parseInt(row) >= 0) {
+            if(isValidDegree(row)) {
                 degree = Integer.parseInt(row);
                 isCorrectInput = true;
             } else {
-                System.out.println("Степень возведения должна быть целым поожительным числом, повторите ввод!");
+                System.out.println("Степень возведения должна быть целым положительным числом, повторите ввод!");
             }
         }
 
@@ -35,12 +35,29 @@ public class Exponentiation {
 
     }
 
-    public static double exponentiation(double number, int degree) {                                                // Метод для возведения в степень
-        double result = 1.0;
-        for (int i = 0; i < degree; i++) {
-            result *= number;
+    public static boolean isValidDegree(String degree) {
+        return ConsoleUtils.isInt(degree) && Integer.parseInt(degree) >= 0;
+    }
+
+    public static double exponentiation(double number, int degree) {     // Метод для возведения в степень
+        if (number == 0) {
+            return 0;
         }
 
-        return result;
+        if (number == 1 || degree == 0) {
+            return 1;
+        }
+
+        if (degree > 0) {
+            double result = 1.0;
+
+            for (int i = 0; i < degree; i++) {
+                result *= number;
+            }
+
+            return result;
+        }
+
+        return -1;
     }
 }

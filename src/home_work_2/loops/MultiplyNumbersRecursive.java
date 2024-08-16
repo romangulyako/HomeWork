@@ -22,6 +22,14 @@ public class MultiplyNumbersRecursive {
     }
 
     public static long multiplyRecursive(int number) {
+        if (number == 0) {
+            return 0;
+        }
+
+        if (number < 0) {
+            return -1;
+        }
+
         if (number == 1) {
             return number;
         }
@@ -31,6 +39,13 @@ public class MultiplyNumbersRecursive {
     }
 
     public static String printExpression(int number) {
+        if (number == 0) {
+            return "0 = ";
+        }
+
+        if (number < 0) {
+            return "Отрицательное число не подходит";
+        }
         StringBuilder builder = new StringBuilder();
 
         for (int i = 1; i <= number; i++) {

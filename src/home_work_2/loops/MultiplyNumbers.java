@@ -26,22 +26,38 @@ public class MultiplyNumbers {
     }
 
     public static long multiply(int number) {
+        if (number == 0) {
+            return 0;
+        }
+
+        if (number < 0) {
+            return -1;
+        }
         long result = 1;
 
-        for (int i = 1; i <= number; i++) {
+
             // Проверка на переполнение
-            try {
+        try {
+            for (int i = 1; i <= number; i++) {
                 result = Math.multiplyExact(result,i);
             }
-            catch (ArithmeticException e) {
-                result = -1;
-            }
+
+        }
+        catch (ArithmeticException e) {
+            result = -1;
         }
 
         return result;
     }
 
     public static String printExpression(int number) {
+        if (number == 0) {
+            return "0 = ";
+        }
+
+        if (number < 0) {
+            return "Отрицательное число не подходит";
+        }
         StringBuilder builder = new StringBuilder();
 
         for (int i = 1; i <= number; i++) {

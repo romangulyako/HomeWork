@@ -21,7 +21,12 @@ public class MultiplyUntilOverflow {
     }
 
     public static long multiplyUntilOverflow (int factor) {
+        if (factor == 0) {
+            return 0;
+        }
+
         long a = 1;
+
         try {
             while (true) {
                 a = Math.multiplyExact(a,factor);

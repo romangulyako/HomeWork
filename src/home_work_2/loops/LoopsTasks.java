@@ -45,7 +45,7 @@ public class LoopsTasks {
         System.out.print("Введите число: ");
         row = ConsoleUtils.inputFromConsole();
 
-        if (ConsoleUtils.isInt(row) && Integer.parseInt(row) >= 0) {
+        if (ConsoleUtils.isInt(row)) {
             String str = fibonacciOutput(Integer.parseInt(row));
             builder.append(str);
         } else {
@@ -84,6 +84,15 @@ public class LoopsTasks {
     // Поиск максимальной цифры числа
     public static int maxDigit (int number) {
         int max = -1;
+
+        if (number == 0) {
+            return 0;
+        }
+
+        if (number < 0) {
+            number = Math.abs(number);
+        }
+
         while (number > 0) {
             if (number % 10 > max) {
                 max = number % 10;
@@ -109,6 +118,10 @@ public class LoopsTasks {
 
     // Подсчет нечетных цифр числа
     public static int oddDigitsCounter(int number) {
+        if (number < 0) {
+            number = Math.abs(number);
+        }
+
         int oddCount = 0;
         while (number > 0) {
             if(number % 2 == 1) {
@@ -121,6 +134,10 @@ public class LoopsTasks {
 
     // Подсчет четных цифр числа
     public static int evenDigitsCounter(int number) {
+        if (number < 0) {
+            number = Math.abs(number);
+        }
+
         int evenCount = 0;
         while (number > 0) {
             if(number % 2 == 0) {
@@ -133,6 +150,10 @@ public class LoopsTasks {
 
     // Возвращает ряд Фибоначчи в размере, переданном в метод
     public static String fibonacciOutput(int size) {
+        if (size < 0) {
+            return "Вы ввели отрицательное число!";
+        }
+
         int currentNumber = 0;
         int nextNumber = 1;
         StringBuilder builder = new StringBuilder();
@@ -154,6 +175,14 @@ public class LoopsTasks {
 
     // Возвращает ряд чисел в диапазоне с шагом
     public static String outputWithIncrements(int start, int end, int increment) {
+        if (start > end) {
+            return "Начало диапазона не может быть больше конца!";
+        }
+
+        if (increment <= 0) {
+            return "Шаг не может быть меньше или равен 0!";
+        }
+
         StringBuilder builder = new StringBuilder();
 
         for (int i = start; i <= end ; i += increment) {
@@ -168,6 +197,10 @@ public class LoopsTasks {
 
     // Переворот числа. Если требуется непосредственно возвращение int, то используется этот метод (но он обрезает 0 на конце числа, т.к. целое число не начинается с 0)
     public static int reverseNumberToInt(int number) {
+        if (number < 0) {
+            return -1;
+        }
+
         int reverseNumber = 0;
         for (int i = String.valueOf(number).length(); i > 0 ; i--) {
             reverseNumber += (number % 10) * Math.pow(10,i-1);
@@ -180,6 +213,14 @@ public class LoopsTasks {
     // Переворот числа. Если нужно просто перевернуть число, то лучше использовать этот метод, так как он не обрезает 0 спереди перевернутого числа
     public static String reverseNumberToString (int number) {
         StringBuilder builder = new StringBuilder();
+
+        if (number == 0) {
+            return "0";
+        }
+
+        if (number < 0) {
+            return "Число меньше 0 нельзя перевернуть";
+        }
 
         while (number > 0) {
             builder.append(number % 10);
