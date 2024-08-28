@@ -35,7 +35,7 @@ public class RandomStringFromFileGenerator implements IGenerator {
         textFromFile = textFromFile.replaceAll("\\W+", " ");
         textFromFile = textFromFile.trim();
 
-        String[] array = textFromFile.split(",");
+        String[] array = textFromFile.split(" ");
 
         return new RandomStringFromArrayGenerator(array).generate();
     }
