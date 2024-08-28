@@ -32,12 +32,8 @@ public class RandomStringFromFileGenerator implements IGenerator {
 
         String textFromFile = builder.toString();
 
-        textFromFile = textFromFile.replaceAll("\\W", ",");
-        textFromFile = textFromFile.replaceAll(",+", ",");
-
-        if (textFromFile.charAt(textFromFile.length() - 1) == ',') {
-            textFromFile = textFromFile.substring(0, textFromFile.length() - 1);
-        }
+        textFromFile = textFromFile.replaceAll("\\W+", " ");
+        textFromFile = textFromFile.trim();
 
         String[] array = textFromFile.split(",");
 

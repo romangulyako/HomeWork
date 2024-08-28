@@ -6,16 +6,19 @@ import java.util.Random;
 
 public class RandomStringGenerator implements IGenerator {
 
-    private final int length;
+    private final int minLength;
+    private final int maxLength;
+    private final Random rnd = new Random();
 
-    public RandomStringGenerator(int length) {
-        this.length = length;
+    public RandomStringGenerator(int minLength, int maxLength) {
+        this.minLength = minLength;
+        this.maxLength = maxLength;
     }
 
     @Override
     public String generate() {
-        Random rnd = new Random();
         StringBuilder nameBuilder = new StringBuilder();
+        int length = minLength + rnd.nextInt(maxLength - minLength + 1);
         int utf8Size = 1_114_112;
 
         if (length > 0) {

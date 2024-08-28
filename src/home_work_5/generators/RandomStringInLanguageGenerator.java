@@ -1,36 +1,35 @@
 package home_work_5.generators;
 
-import home_work_5.Alphabet;
+import home_work_5.dto.Alphabet;
 import home_work_5.api.IGenerator;
 
 import java.util.Random;
 
 public class RandomStringInLanguageGenerator implements IGenerator {
 
-    private final int length;
+    private final int minLength;
+    private final int maxLength;
     private final Alphabet language;
 
-    public RandomStringInLanguageGenerator(int length, Alphabet language) {
-        this.length = length;
+    private final Random rnd = new Random();
+
+    public RandomStringInLanguageGenerator(int minLength, int maxLength, Alphabet language) {
+        this.minLength = minLength;
+        this.maxLength = maxLength;
         this.language = language;
 
     }
 
     @Override
     public String generate() {
-        Random rnd = new Random();
         StringBuilder nameBuilder = new StringBuilder();
+        int length = minLength + rnd.nextInt(maxLength - minLength + 1);
 
-        char[] allLettersOfAlphabet = new char[language.getSize() * 2];
-
-        for (int i = 0; i < language.getSize(); i++) {
-            allLettersOfAlphabet[i] = (char) (language.getStartUpperLetter() + i);
-            allLettersOfAlphabet[language.getSize() + i] = (char) (language.getStartLowerLetter() + i);
-        }
+        char[] alphabet = language.getAlphabet();
 
         if (length > 0) {
             for (int i = 0; i < length; i++) {
-                nameBuilder.append(allLettersOfAlphabet[rnd.nextInt(allLettersOfAlphabet.length)]);
+                nameBuilder.append(alphabet[rnd.nextInt(alphabet.length)]);
             }
 
             return nameBuilder.toString();
