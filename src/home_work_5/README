@@ -1,0 +1,12 @@
+Задание 1   - dto.Person, dto.Animal;
+
+Задания 2-4 - api.IGenerator, generators.RandomStringGenerator, generators.RandomStringInLanguageGenerator,
+              generators.RandomStringFromArrayGenerator,generators.RandomStringFromFileGenerator,
+              generators.PasswordGenerator;
+
+Задание 5   - comparators.AgeOfAnimalComparator, comparators.AgeOfAnimalsAndNickComparator,
+              comparators.PasswordLengthComparator, comparators.PasswordLengthAndNickComparator;
+
+Задание 6   - api.ICreator, creators.AnimalCreator, creators.PersonCreator, CollectionHandler,
+              dto.Alphabet, utils.SortUtils, utils.TimeTestUtils, utils.GeneralUtils,
+              AnimalMain, PersonMain.
