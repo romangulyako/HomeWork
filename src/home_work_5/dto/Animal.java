@@ -5,10 +5,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 public class Animal implements Comparable<Animal> {
-    private final byte age;
+    private final int age;
     private final String nick;
 
-    public Animal(byte age, String nick) {
+    public Animal(int age, String nick) {
         if (age >= 1 && age <= 15) {
             this.age = age;
         } else {
@@ -18,7 +18,7 @@ public class Animal implements Comparable<Animal> {
         this.nick = nick;
     }
 
-    public byte getAge() {
+    public int getAge() {
         return age;
     }
 

@@ -23,6 +23,6 @@ public class AnimalCreator implements ICreator<Animal> {
     @Override
     public Animal create() {
         int age = minAge + rnd.nextInt(maxAge - minAge + 1);
-        return new Animal((byte)age, nickGenerator.generate());
+        return new Animal(age, nickGenerator.generate());
     }
 }
