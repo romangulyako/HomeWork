@@ -1,6 +1,7 @@
 package home_work_5.generators;
 
 import home_work_5.api.IGenerator;
+import home_work_5.exceptions.NumberFromRangeException;
 
 import java.util.Random;
 
@@ -11,6 +12,9 @@ public class PasswordGenerator implements IGenerator {
     private final Random rnd = new Random();
 
     public PasswordGenerator(int minLength, int maxLength) {
+        NumberFromRangeException.checkCompareMinAndMax(minLength,maxLength);
+        NumberFromRangeException.checkPositiveMin(minLength);
+
         this.minLength = minLength;
         this.maxLength = maxLength;
     }

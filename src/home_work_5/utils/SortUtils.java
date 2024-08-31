@@ -1,5 +1,7 @@
 package home_work_5.utils;
 
+import home_work_5.exceptions.NullArgumentException;
+
 import java.util.Comparator;
 
 public class SortUtils<T> {
@@ -13,8 +15,11 @@ public class SortUtils<T> {
      * Метод сортировки массива пузырьком
      *
      * @param array массив, который нужно отсортировать
+     * @throws NullArgumentException если массив равен null
      */
     public void bubbleSort(T[] array) {
+        NullArgumentException.check(array);
+
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = i + 1; j < array.length; j++) {
                 if (comparator.compare(array[i],array[j]) > 0) {
@@ -30,8 +35,10 @@ public class SortUtils<T> {
      * Метод шейкерной сортировки массива
      *
      * @param array массив, который нужно отсортировать
+     * @throws NullArgumentException если массив равен null
      */
     public void shakerSort(T[] array) {
+        NullArgumentException.check(array);
 
         int left = 0, right = array.length - 1;
         boolean isMoved = true;
@@ -69,8 +76,11 @@ public class SortUtils<T> {
      * Метод быстрой сортировки массива
      *
      * @param array массив, который нужно отсортировать
+     * @throws NullArgumentException если массив равен null
      */
     public void quickSort(T[] array, int first, int last) {
+        NullArgumentException.check(array);
+
         if (first < last) {
             int pi = partition(array, first, last);
 

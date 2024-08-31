@@ -2,6 +2,8 @@ package home_work_5.generators;
 
 import home_work_5.dto.Alphabet;
 import home_work_5.api.IGenerator;
+import home_work_5.exceptions.NullArgumentException;
+import home_work_5.exceptions.NumberFromRangeException;
 
 import java.util.Random;
 
@@ -14,10 +16,13 @@ public class RandomStringInLanguageGenerator implements IGenerator {
     private final Random rnd = new Random();
 
     public RandomStringInLanguageGenerator(int minLength, int maxLength, Alphabet language) {
+        NullArgumentException.check(language);
+        NumberFromRangeException.checkCompareMinAndMax(minLength,maxLength);
+        NumberFromRangeException.checkPositiveMin(minLength);
+
         this.minLength = minLength;
         this.maxLength = maxLength;
         this.language = language;
-
     }
 
     @Override
