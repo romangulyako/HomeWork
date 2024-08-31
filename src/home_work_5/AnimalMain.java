@@ -6,6 +6,8 @@ import home_work_5.comparators.AgeOfAnimalsAndNickComparator;
 import home_work_5.creators.AnimalCreator;
 import home_work_5.dto.Alphabet;
 import home_work_5.dto.Animal;
+import home_work_5.exceptions.FileHandlingException;
+import home_work_5.exceptions.NullArgumentException;
 import home_work_5.generators.RandomStringFromArrayGenerator;
 import home_work_5.generators.RandomStringFromFileGenerator;
 import home_work_5.generators.RandomStringGenerator;
@@ -19,39 +21,46 @@ public class AnimalMain {
 
         int collectionSize = 100_000;
 
-        CollectionHandler<Animal> handler = new CollectionHandler<>();
-        GeneralTestUtils<Animal> testAnimal = new GeneralTestUtils<>(handler,new AgeOfAnimalsAndNickComparator());
+        try {
+            CollectionHandler<Animal> handler = new CollectionHandler<>();
+            GeneralTestUtils<Animal> testAnimal = new GeneralTestUtils<>(handler,new AgeOfAnimalsAndNickComparator());
 
-        IGenerator nickGenerator = new RandomStringGenerator(4,8);
-        ICreator<Animal> animalCreator = new AnimalCreator(nickGenerator,1,15);
-        System.out.println("ТЕСТИРОВАНИЕ ЗАПОЛНЕНИЯ КОЛЛЕКЦИИ ОБЪЕКТАМИ Animal С РАНДОМНЫМИ НИКАМИ");
-        testAnimal.fillingTest(collectionSize,animalCreator);
-        testAnimal.clearAllCollections();
+            IGenerator nickGenerator = new RandomStringGenerator(4,8);
+            ICreator<Animal> animalCreator = new AnimalCreator(nickGenerator,1,15);
+            System.out.println("ТЕСТИРОВАНИЕ ЗАПОЛНЕНИЯ КОЛЛЕКЦИИ ОБЪЕКТАМИ Animal С РАНДОМНЫМИ НИКАМИ");
+            testAnimal.fillingTest(collectionSize,animalCreator);
+            testAnimal.clearAllCollections();
 
-        nickGenerator = new RandomStringInLanguageGenerator(4,8, Alphabet.RU);
-        animalCreator = new AnimalCreator(nickGenerator,1,15);
-        System.out.println("ТЕСТИРОВАНИЕ ЗАПОЛНЕНИЯ КОЛЛЕКЦИИ ОБЪЕКТАМИ Animal С РАНДОМНЫМИ НИКАМИ НА РУССКОМ");
-        testAnimal.fillingTest(collectionSize,animalCreator);
-        testAnimal.clearAllCollections();
+            nickGenerator = new RandomStringInLanguageGenerator(4,8, Alphabet.RU);
+            animalCreator = new AnimalCreator(nickGenerator,1,15);
+            System.out.println("ТЕСТИРОВАНИЕ ЗАПОЛНЕНИЯ КОЛЛЕКЦИИ ОБЪЕКТАМИ Animal С РАНДОМНЫМИ НИКАМИ НА РУССКОМ");
+            testAnimal.fillingTest(collectionSize,animalCreator);
+            testAnimal.clearAllCollections();
 
-        nickGenerator = new RandomStringFromFileGenerator(nicksFilePath);
-        animalCreator = new AnimalCreator(nickGenerator,1,15);
-        System.out.println("ТЕСТИРОВАНИЕ ЗАПОЛНЕНИЯ КОЛЛЕКЦИИ ОБЪЕКТАМИ Animal С РАНДОМНЫМИ НИКАМИ ИЗ ФАЙЛА");
-        testAnimal.fillingTest(collectionSize,animalCreator);
-        testAnimal.clearAllCollections();
+            nickGenerator = new RandomStringFromFileGenerator(nicksFilePath);
+            animalCreator = new AnimalCreator(nickGenerator,1,15);
+            System.out.println("ТЕСТИРОВАНИЕ ЗАПОЛНЕНИЯ КОЛЛЕКЦИИ ОБЪЕКТАМИ Animal С РАНДОМНЫМИ НИКАМИ ИЗ ФАЙЛА");
+            testAnimal.fillingTest(collectionSize,animalCreator);
+            testAnimal.clearAllCollections();
 
-        nickGenerator = new RandomStringFromArrayGenerator(nicks);
-        animalCreator = new AnimalCreator(nickGenerator,1,15);
-        System.out.println("ТЕСТИРОВАНИЕ ЗАПОЛНЕНИЯ КОЛЛЕКЦИИ ОБЪЕКТАМИ Animal С РАНДОМНЫМИ НИКАМИ ИЗ МАССИВА");
-        testAnimal.fillingTest(collectionSize,animalCreator);
+            nickGenerator = new RandomStringFromArrayGenerator(nicks);
+            animalCreator = new AnimalCreator(nickGenerator,1,15);
+            System.out.println("ТЕСТИРОВАНИЕ ЗАПОЛНЕНИЯ КОЛЛЕКЦИИ ОБЪЕКТАМИ Animal С РАНДОМНЫМИ НИКАМИ ИЗ МАССИВА");
+            testAnimal.fillingTest(collectionSize,animalCreator);
 
-        testAnimal.sortingByJdkTest();
-        testAnimal.sortingByCollectionHandlerTest();
+            testAnimal.sortingByJdkTest();
+            testAnimal.sortingByCollectionHandlerTest();
 
-        testAnimal.iterationByIteratorTest();
-        testAnimal.iterationByForTest();
+            testAnimal.iterationByIteratorTest();
+            testAnimal.iterationByForTest();
 
-        testAnimal.removeAllWithIteratorTest();
-        testAnimal.removeAllTest();
+            testAnimal.removeAllWithIteratorTest();
+            testAnimal.removeAllTest();
+        } catch (NullArgumentException | FileHandlingException | IllegalArgumentException e) {
+            System.out.println("Ошибка: " + e.getMessage());
+            System.out.print("Подробнее об ошибке: ");
+            e.printStackTrace();
+        }
+
     }
 }
