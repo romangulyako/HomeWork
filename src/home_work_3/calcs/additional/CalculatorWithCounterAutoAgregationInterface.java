@@ -6,7 +6,7 @@ public class CalculatorWithCounterAutoAgregationInterface {
     /**
      * Поле, хранящее экземпляр калькулятора, переданного в конструктор
      */
-    ICalculator calc;
+    private ICalculator calc;
 
     /**
      * Поле, хранящее количество операций, выполненных калькулятором

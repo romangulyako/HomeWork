@@ -8,17 +8,17 @@ public class CalculatorWithCounterAutoChoiceAgregation {
     /**
      * Поле, хранящее экземпляр калькулятора, описанного классом CalculatorWithOperator
      */
-    CalculatorWithOperator calcWithOperator;
+    private CalculatorWithOperator calcWithOperator;
 
     /**
      * Поле, хранящее экземпляр калькулятора, описанного классом CalculatorWithMathCopy
      */
-    CalculatorWithMathCopy calcWithMathCopy;
+    private CalculatorWithMathCopy calcWithMathCopy;
 
     /**
      * Поле, хранящее экземпляр калькулятора, описанного классом CalculatorWithMathExtends
      */
-    CalculatorWithMathExtends calcWithMathExtends;
+    private CalculatorWithMathExtends calcWithMathExtends;
 
     /**
      * Поле, хранящее количество операций, выполненных калькулятором

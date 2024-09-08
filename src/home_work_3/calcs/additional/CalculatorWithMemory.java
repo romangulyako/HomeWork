@@ -6,7 +6,7 @@ public class CalculatorWithMemory {
     /**
      * Поле, хранящее экземпляр калькулятора, переданного в конструктор
      */
-    ICalculator calc;
+    private ICalculator calc;
 
     /**
      * Поле, хранящее промежуточный результат выполненной операции

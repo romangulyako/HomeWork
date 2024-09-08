@@ -6,7 +6,7 @@ public class CalculatorWithCounterAutoAgregation {
     /**
      * Поле, хранящее экземпляр калькулятора, описанного классом CalculatorWithMathCopy
      */
-    CalculatorWithMathCopy calc;
+    private CalculatorWithMathCopy calc;
 
     /**
      * Поле, хранящее количество операций, выполненных калькулятором

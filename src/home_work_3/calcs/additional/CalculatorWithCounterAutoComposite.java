@@ -6,7 +6,7 @@ public class CalculatorWithCounterAutoComposite {
     /**
      * Поле, хранящее экземпляр калькулятора, описанного классом CalculatorWithMathCopy
      */
-    CalculatorWithMathCopy calc = new CalculatorWithMathCopy();
+    private CalculatorWithMathCopy calc = new CalculatorWithMathCopy();
 
     /**
      * Поле, хранящее количество операций, выполненных калькулятором
