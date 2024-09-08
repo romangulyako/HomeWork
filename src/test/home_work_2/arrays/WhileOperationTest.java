@@ -1,5 +1,6 @@
 package test.home_work_2.arrays;
 
+import home_work_2.arrays.IArraysOperation;
 import home_work_2.arrays.WhileOperation;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +15,7 @@ public class WhileOperationTest {
     String printEverySecondElementOfArrayHead = "Печать каждого второго элемента массива (while)\n";
     String reversePrintingHead = "Печать массива наоборот (while)\n";
 
-    WhileOperation operator = new WhileOperation();
+    IArraysOperation operator = new WhileOperation();
 
     @Test
     public void printToConsoleSimpleArrayTest() {

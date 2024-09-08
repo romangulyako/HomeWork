@@ -3,7 +3,7 @@ package home_work_2.loops;
 import home_work_2.utils.ConsoleUtils;
 
 public class MultiplyNumbersRecursive {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         StringBuilder result = new StringBuilder();
 
         // Проверка, корректно ли передано в аргументы целое число
@@ -19,7 +19,7 @@ public class MultiplyNumbersRecursive {
         }
 
         System.out.println(result.toString());
-    }
+    }*/
 
     public static long multiplyRecursive(int number) {
         if (number == 0) {

@@ -3,7 +3,7 @@ package home_work_2.loops;
 import home_work_2.utils.ConsoleUtils;
 
 public class MultiplyNumbers {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         StringBuilder result = new StringBuilder();
 
         // Проверка, корректно ли передано в аргументы целое число
@@ -23,7 +23,7 @@ public class MultiplyNumbers {
         }
 
         System.out.println(result.toString());
-    }
+    }*/
 
     public static long multiply(int number) {
         if (number == 0) {

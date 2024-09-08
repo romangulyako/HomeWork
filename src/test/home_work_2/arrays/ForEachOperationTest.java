@@ -1,6 +1,7 @@
 package test.home_work_2.arrays;
 
 import home_work_2.arrays.ForOperation;
+import home_work_2.arrays.IArraysOperation;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,7 +15,7 @@ public class ForEachOperationTest {
     String printEverySecondElementOfArrayHead = "Печать каждого второго элемента массива (for)\n";
     String reversePrintingHead = "Печать массива наоборот (for)\n";
 
-    ForOperation operator = new ForOperation();
+    IArraysOperation operator = new ForOperation();
 
     @Test
     public void printToConsoleSimpleArrayTest() {

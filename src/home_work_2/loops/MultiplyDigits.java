@@ -3,7 +3,7 @@ package home_work_2.loops;
 import home_work_2.utils.ConsoleUtils;
 
 public class MultiplyDigits {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
         StringBuilder result = new StringBuilder();
 
@@ -18,7 +18,7 @@ public class MultiplyDigits {
         }
 
         System.out.println(result.toString());
-    }
+    }*/
 
     public static long multiply (int number) {                                          // Метод, перемножающий цифры переданного в него числа
         if (number == 0) {
@@ -38,17 +38,23 @@ public class MultiplyDigits {
     public static String printExpression(String number) {
         StringBuilder builder = new StringBuilder();
 
-        number = number.replaceFirst("-", "");
+        if(ConsoleUtils.isInt(number)) {
+            number = number.replaceFirst("-", "");
 
-        char[] arr = number.toCharArray();
-        for (int i = 0; i < arr.length; i++) {
-            if (i!= arr.length - 1) {
-                builder.append(arr[i]);
-                builder.append(" * ");
-            } else {
-                builder.append(arr[i]);
-                builder.append(" = ");
+            char[] arr = number.toCharArray();
+            for (int i = 0; i < arr.length; i++) {
+                if (i!= arr.length - 1) {
+                    builder.append(arr[i]);
+                    builder.append(" * ");
+                } else {
+                    builder.append(arr[i]);
+                    builder.append(" = ");
+                }
             }
+        } else if(ConsoleUtils.isDouble(number)) {
+            builder.append("Введено не целое число");
+        } else {
+            builder.append("Введено не число");
         }
 
         return builder.toString();

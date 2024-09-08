@@ -1,6 +1,7 @@
 package test.home_work_2.arrays;
 
 import home_work_2.arrays.DoWhileOperation;
+import home_work_2.arrays.IArraysOperation;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,7 +15,7 @@ public class DoWhileOperationTest {
     String printEverySecondElementOfArrayHead = "Печать каждого второго элемента массива (do while)\n";
     String reversePrintingHead = "Печать массива наоборот (do while)\n";
 
-    DoWhileOperation operator = new DoWhileOperation();
+    IArraysOperation operator = new DoWhileOperation();
 
     @Test
     public void printToConsoleSimpleArrayTest() {

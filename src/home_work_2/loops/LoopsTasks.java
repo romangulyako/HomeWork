@@ -5,7 +5,7 @@ import home_work_2.utils.ConsoleUtils;
 import java.util.Random;
 
 public class LoopsTasks {
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         StringBuilder builder = new StringBuilder();
 
         System.out.print("Введите число (не менее 1000): ");
@@ -79,7 +79,7 @@ public class LoopsTasks {
         }
 
         System.out.println(builder.toString());
-    }
+    }*/
 
     // Поиск максимальной цифры числа
     public static int maxDigit (int number) {

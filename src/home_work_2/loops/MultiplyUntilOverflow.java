@@ -3,7 +3,7 @@ package home_work_2.loops;
 import home_work_2.utils.ConsoleUtils;
 
 public class MultiplyUntilOverflow {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         boolean isExit = false;
 
         while (!isExit) {
@@ -18,7 +18,7 @@ public class MultiplyUntilOverflow {
                 isExit = true;
             }
         }
-    }
+    }*/
 
     public static long multiplyUntilOverflow (int factor) {
         if (factor == 0) {

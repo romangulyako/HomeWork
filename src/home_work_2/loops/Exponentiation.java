@@ -3,7 +3,7 @@ package home_work_2.loops;
 import home_work_2.utils.ConsoleUtils;
 
 public class Exponentiation {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         boolean isCorrectInput = false;                                                                             // Флаг для определения корректности ввода
         double number = 0.0;
         int degree = 0;
@@ -33,7 +33,7 @@ public class Exponentiation {
 
         System.out.println(number + " ^ " + degree + " = " + exponentiation(number,degree));
 
-    }
+    }*/
 
     public static boolean isValidDegree(String degree) {
         return ConsoleUtils.isInt(degree) && Integer.parseInt(degree) >= 0;

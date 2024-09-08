@@ -11,6 +11,8 @@ public class ExponentiationTest {
     @DisplayName("Тестирование возведения числа в степень (number, degree, result)")
     @ParameterizedTest
     @CsvSource({
+            "18, 5, 1_889_568.0",
+            "7.5, 2, 56.25",
             "2, 8, 256",
             "-2, 3, -8",
             "0, 300, 0",
