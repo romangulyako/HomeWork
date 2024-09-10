@@ -52,9 +52,7 @@ public class DataContainerIntegerTest {
         DataContainer<Integer> container = new DataContainer<>(arrayWithoutNull);
         Integer[] result = {1,2,3,4,5};
         Integer[] items = container.getItems();
-        for (int i = 0; i < items.length; i++) {
-            assertEquals(result[i],items[i]);
-        }
+        assertArrayEquals(result,items);
     }
 
     @DisplayName("Тестирование удаления элемента коллекции (int index, boolean result)")
@@ -92,8 +90,10 @@ public class DataContainerIntegerTest {
     public void sortTest() {
         Integer[] notSortedArray = {5,3,2,4,1};
         DataContainer<Integer> container = new DataContainer<>(notSortedArray);
-        String result = "[1, 2, 3, 4, 5]";
+        Integer[] result = {1, 2, 3, 4, 5};
+
         container.sort(new IntegerComparator());
-        assertEquals(result, container.toString());
+
+        assertArrayEquals(result, container.getItems());
     }
 }
