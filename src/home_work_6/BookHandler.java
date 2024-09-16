@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class BookHandler implements ITextHandler {
     private final String text;
 
-    public BookHandler(String path) throws IOException {
+    public BookHandler(String path) {
         this.text = read(path);
     }
 
@@ -45,7 +45,7 @@ public class BookHandler implements ITextHandler {
     }
 
     @Override
-    public List<Map.Entry<String,Integer>> getSortedByCountWords() {
+    public List<Map.Entry<String,Integer>> getSortedWordsByUsage() {
         Map<String, Integer> words = getWordsAndTheirCount();
         List<Map.Entry<String, Integer>> sortedListOfWords = new ArrayList<>(words.entrySet());
 
@@ -56,18 +56,16 @@ public class BookHandler implements ITextHandler {
 
     @Override
     public List<Map.Entry<String, Integer>> getTopWordsByUsage(int count) {
-        return getSortedByCountWords().subList(0,count);
+        return getSortedWordsByUsage().subList(0,count);
     }
 
-    private String read(String path) throws IOException{
+    private String read(String path) {
         StringBuilder text = new StringBuilder();
 
         File file = new File(path);
 
         if (file.exists() && file.isFile()) {
-            try {
-                Reader reader = new FileReader(file);
-
+            try (Reader reader = new FileReader(file)) {
                 int symbol;
 
                 while ((symbol = reader.read()) != -1) {
@@ -75,17 +73,17 @@ public class BookHandler implements ITextHandler {
                 }
 
             } catch (IOException e) {
-                throw new IOException(e.getMessage());
+                throw new RuntimeException(e);
             }
         } else {
-            throw new IOException("Возможно путь к файлу неверный или это не файл");
+            throw new IllegalArgumentException("Возможно путь к файлу неверный или это не файл");
         }
 
         return text.toString();
     }
 
     private List<String> splitText() {
-        String regEx = "\\b[А-Яа-яЁёA-Za-z]+(-[А-Яа-яЁёA-Za-z])?\\b";
+        String regEx = "\\b[А-Яа-яЁёA-Za-z\\d]+(-[А-Яа-яЁёA-Za-z\\d])*\\b";
         Pattern pattern = Pattern.compile(regEx);
         Matcher matcher = pattern.matcher(this.text);
 

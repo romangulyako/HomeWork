@@ -3,17 +3,30 @@ package home_work_6;
 import home_work_6.api.ISearchEngine;
 import home_work_6.api.ITextHandler;
 import home_work_6.search_engines.CaseInsensitiveSearchEngine;
+import home_work_6.search_engines.EasySearch;
 import home_work_6.search_engines.RegExSearch;
 
-import java.io.IOException;
-
 public class SearchEngineMain {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         String path = "Война и мир_книга.txt";
         ITextHandler textHandler = new BookHandler(path);
 
+        System.out.println("-------------------------------------------------------------");
+        System.out.println("Тест EasySearch");
+        System.out.println("-------------------------------------------------------------");
         System.out.println("Подсчет количества слов \"война\", \"и\" и \"мир\" с учетом регистра");
-        ISearchEngine searchEngine = new RegExSearch();
+        ISearchEngine searchEngine = new EasySearch();
+        printWarAndPeaceCount(searchEngine,textHandler);
+
+        System.out.println("Подсчет количества слов \"война\", \"и\" и \"мир\" без учета регистра");
+        searchEngine = new CaseInsensitiveSearchEngine(new EasySearch());
+        printWarAndPeaceCount(searchEngine,textHandler);
+
+        System.out.println("-------------------------------------------------------------");
+        System.out.println("Тест RegExSearch");
+        System.out.println("-------------------------------------------------------------");
+        System.out.println("Подсчет количества слов \"война\", \"и\" и \"мир\" с учетом регистра");
+        searchEngine = new RegExSearch();
         printWarAndPeaceCount(searchEngine,textHandler);
 
         System.out.println("Подсчет количества слов \"война\", \"и\" и \"мир\" без учета регистра");

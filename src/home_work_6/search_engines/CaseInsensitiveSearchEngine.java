@@ -11,8 +11,12 @@ public class CaseInsensitiveSearchEngine implements ISearchEngine {
 
     @Override
     public long search(String text, String word) {
-        text = text.toLowerCase();
-        word = word.toLowerCase();
+        if (searchEngine instanceof RegExSearch) {
+            ((RegExSearch) searchEngine).caseInsensitive();
+        } else {
+            text = text.toLowerCase();
+            word = word.toLowerCase();
+        }
 
         return this.searchEngine.search(text,word);
     }
