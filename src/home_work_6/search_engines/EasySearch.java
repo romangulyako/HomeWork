@@ -12,10 +12,12 @@ public class EasySearch implements ISearchEngine {
         int textLength = text.length();
 
         while ((currentIndex = text.indexOf(word,currentIndex)) != -1) {
-            currentIndex = text.indexOf(word,currentIndex);
-            boolean isStartBound = (currentIndex == 0 || (!Character.isLetterOrDigit(text.charAt(currentIndex - 1)) && text.charAt(currentIndex - 1) != '-'));
+            boolean isStartBound = (currentIndex == 0 ||
+                    (!Character.isLetterOrDigit(text.charAt(currentIndex - 1))
+                            && text.charAt(currentIndex - 1) != '-'));
             boolean isEndBound = (currentIndex + wordLength == textLength ||
-                    (!Character.isLetterOrDigit(text.charAt(currentIndex + wordLength)) && text.charAt(currentIndex + wordLength) != '-'));
+                    (!Character.isLetterOrDigit(text.charAt(currentIndex + wordLength))
+                            && text.charAt(currentIndex + wordLength) != '-'));
 
             if (isStartBound && isEndBound) {
                 count++;

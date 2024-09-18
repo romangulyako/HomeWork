@@ -19,6 +19,11 @@ public class BookHandler implements ITextHandler {
         return this.text;
     }
 
+    /**
+     * Метод собирает все уникальные слова, которые используются в тексте(с учетом регистра)
+     *
+     * @return коллекция уникальных слов
+     */
     @Override
     public Set<String> getUsedWords() {
         return new HashSet<>(splitText());
@@ -29,6 +34,11 @@ public class BookHandler implements ITextHandler {
         return getUsedWords().size();
     }
 
+    /**
+     * Метод считает, сколько раз каждое слово встречалось в тексте
+     *
+     * @return коллекция Map (ключ - слово, значение - количество использований в тексте)
+     */
     @Override
     public Map<String, Integer> getWordsAndTheirCount() {
         List<String> allWords = splitText();
@@ -44,6 +54,11 @@ public class BookHandler implements ITextHandler {
         return words;
     }
 
+    /**
+     * Метод сортирует коллекцию использованных слов по количеству использований
+     *
+     * @return отсортированная коллекция
+     */
     @Override
     public List<Map.Entry<String,Integer>> getSortedWordsByUsage() {
         Map<String, Integer> words = getWordsAndTheirCount();
@@ -59,6 +74,14 @@ public class BookHandler implements ITextHandler {
         return getSortedWordsByUsage().subList(0,count);
     }
 
+    /**
+     * Метод читает текстовый файл
+     *
+     * @param path путь к файлу
+     * @throws IllegalArgumentException если путь к файлу указан неверно или это путь не к файлу
+     * @throws RuntimeException если возникла ошибка при чтении файла
+     * @return содержимое текстового файла
+     */
     private String read(String path) {
         StringBuilder text = new StringBuilder();
 
@@ -82,6 +105,11 @@ public class BookHandler implements ITextHandler {
         return text.toString();
     }
 
+    /**
+     * Метод находит в тексте слова и помещает их в коллекцию
+     *
+     * @return коллекция из слов
+     */
     private List<String> splitText() {
         String regEx = "\\b[А-Яа-яЁёA-Za-z\\d]+(-[А-Яа-яЁёA-Za-z\\d])*\\b";
         Pattern pattern = Pattern.compile(regEx);

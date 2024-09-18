@@ -9,7 +9,6 @@ public class SearchEnginePunctuationNormalizer implements ISearchEngine {
         this.searchEngine = searchEngine;
     }
 
-
     @Override
     public long search(String text, String word) {
         text = text.replaceAll("([.,!?:;\\s\\n\\r\"']|( - ))+"," ");
