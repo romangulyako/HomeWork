@@ -8,81 +8,113 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class DirectoryWithBooksMain {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
         System.out.print("Введите путь к папке с книгами: ");
-        String path = console.nextLine();
-        File[] books = getBooks(path);
 
-        String menu = getGlobalMenu(path);
-        System.out.println(menu);
+        String path = console.nextLine();
+
 
         try (Writer writer = new FileWriter("result.txt")){
-
             while (true) {
-                System.out.println("-----------------------");
-                System.out.println(getGlobalMenu(path));
-                int indexBook = console.nextInt();
+                System.out.println(globalMenu());
+                int selectGlobalMenu = console.nextInt();
 
-                if (indexBook == 0) {
+                if (selectGlobalMenu == 0) {
                     break;
-                } else if (indexBook < 0 || indexBook > books.length) {
-                    System.out.println("Передан неверный параметр. Повторите!");
-                }
-                else {
-                    String bookName = books[indexBook-1].getName();
-                    ITextHandler bookHandler = new BookHandler(path +"/"+ bookName);
-
+                } else if (selectGlobalMenu > 1) {
+                    System.out.println("Такого пункта в меню нет. Программа закрывается.");
+                } else {
                     while (true) {
-                        System.out.println("-----------------------");
-                        System.out.println(getBookMenu());
-                        String menuChoice = console.next();
-                        if (menuChoice.equals("1")) {
-                            System.out.print("Введите слово для поиска: ");
-                            String word = console.next();
-                            ISearchEngine searchEngine = new RegExSearch();
-                            long countUsage = searchEngine.search(bookHandler.getText(),word);
-                            System.out.println("Это слово встречается " + countUsage + " раз");
-                            writer.write(books[indexBook-1].getName() + " - " + word + " - " + countUsage + "\n");
-                            writer.flush();
-                        } else {
+                        System.out.println(listBooksMenu(path));
+                        int selectListBookMenu = console.nextInt();
+
+                        List<String> books = getBooksNames(path);
+                        if (selectListBookMenu == 0) {
                             break;
+                        } else if (selectListBookMenu < 0 || selectListBookMenu > books.size()) {
+                            System.out.println("Неверный номер книги!");
+                        } else {
+                            String bookName = books.get(selectListBookMenu-1);
+                            ITextHandler bookHandler = new BookHandler(path +"/"+ bookName);
+
+                            while (true) {
+                                System.out.println(bookMenu());
+                                int selectBookMenu = console.nextInt();
+                                if (selectBookMenu == 1) {
+                                    System.out.print("Введите слово для поиска: ");
+                                    String word = console.next();
+                                    ISearchEngine searchEngine = new RegExSearch();
+
+                                    long countUsage = searchEngine.search(bookHandler.getText(),word);
+                                    System.out.println("Это слово встречается " + countUsage + " раз");
+
+                                    writer.write(bookName + " - " + word + " - " + countUsage + "\n");
+                                    writer.flush();
+                                } else {
+                                    break;
+                                }
+                            }
                         }
                     }
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException | InputMismatchException e) {
             System.out.println(e.getMessage());
         }
     }
-    public static File[] getBooks(String path) {
+    public static List<String> getBooksNames(String path) {
         File directory = new File(path);
+        List<String> bookNames = new ArrayList<>();
 
         if (directory.isDirectory()) {
-            return directory.listFiles();
+            File[] books = directory.listFiles();
+
+            for (File file : books) {
+                bookNames.add(file.getName());
+            }
+
+            return bookNames;
         } else {
             throw new IllegalArgumentException("Это не папка или такой папки не существует!");
         }
     }
 
-    public static String getGlobalMenu(String path) {
-        StringBuilder menu = new StringBuilder();
-        File[] books = getBooks(path);
+    public static Menu globalMenu() {
+        Menu globalMenu = new Menu();
 
-        int number = 1;
-        for (File book : books) {
-            menu.append(number++).append(". ").append(book.getName()).append("\n");
-        }
-        menu.append("0. Выход из программы\n");
-        menu.append("Введите номер книги или 0 для выхода из программы: ");
+        globalMenu.addItem(new MenuItem("Перейти к списку книг", 1));
+        globalMenu.addItem(new MenuItem("Выйти из программы", 0));
 
-        return menu.toString();
+        return globalMenu;
     }
 
-    public static String getBookMenu() {
-        return "1 - Найти слово в книге\nДругая клавиша - Вернуться к списку книг\n";
+    public static Menu listBooksMenu(String path) {
+        Menu listBooksMenu = new Menu();
+        List<String> booksNames = getBooksNames(path);
+        int id = 1;
+
+        for (String bookName : booksNames) {
+            listBooksMenu.addItem(new MenuItem(bookName,id++));
+        }
+
+        listBooksMenu.addItem(new MenuItem("Вернуться в основное меню", 0));
+
+        return listBooksMenu;
+    }
+
+    public static Menu bookMenu() {
+        Menu bookMenu = new Menu();
+
+        bookMenu.addItem(new MenuItem("Найти слово в книге", 1));
+        bookMenu.addItem(new MenuItem("Вернуться к списку книг", 0));
+
+        return bookMenu;
     }
 }
