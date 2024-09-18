@@ -26,10 +26,14 @@ public class Menu {
 
         items.sort(Comparator.comparingInt(MenuItem::getId));
 
+
         for (MenuItem item : items) {
-            menuBuilder.append(item.toString()).append("\n");
+            if (item.getId() != 0) {
+                menuBuilder.append(item).append("\n");
+            }
         }
 
+        menuBuilder.append(this.getItem(0)).append("\n");
         menuBuilder.append("Введите номер нужного пункта: ");
 
         return menuBuilder.toString();
