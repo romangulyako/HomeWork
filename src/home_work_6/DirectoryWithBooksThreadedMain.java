@@ -17,12 +17,13 @@ import java.util.concurrent.Executors;
 
 public class DirectoryWithBooksThreadedMain {
     public static void main(String[] args) {
+        String resultFilePath = "result.txt";
         Scanner console = new Scanner(System.in);
         System.out.print("Введите путь к папке с книгами: ");
 
         String path = console.nextLine();
 
-        try (Writer writer = new FileWriter("result.txt")){
+        try (Writer writer = new FileWriter(resultFilePath)){
             List<String> books = getBooksNames(path);
             StringBuffer buffer = new StringBuffer();
 
@@ -56,6 +57,8 @@ public class DirectoryWithBooksThreadedMain {
 
             writer.write(buffer.toString());
             writer.flush();
+
+            System.out.println(new BookHandler(resultFilePath).getText());
         } catch (IOException | InputMismatchException e) {
             System.out.println(e.getMessage());
         }
